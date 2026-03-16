@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 /* COMPONENT DEFAULTS */
+
+
+
 .btn-default {
 
 }
@@ -13,3 +16,6 @@
   transform: scale(1.1);
 }
 
+.btn-outlined:hover {
+  transform: scale(1.1);
+}

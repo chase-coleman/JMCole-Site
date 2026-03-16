@@ -2,3 +2,7 @@
   font-family: "crimson";
   src: url("./CrimsonText-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "martian";
+  src: url("./MartianMono-Regular.ttf") format("truetype");
+}
