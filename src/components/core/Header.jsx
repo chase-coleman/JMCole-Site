@@ -9,10 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import BasicButton from '../individual/Button';
+import {BasicButton} from '../individual/Button';
 import { useNavigate } from 'react-router';
+import PhoneIcon from '@mui/icons-material/Phone';
 
-const pages = [{name: 'FAQs', url: 'medicare-faqs'},{name:'Turning 65', url: 'turning-65'},{name:'Medicare Options', url: 'medicare-options'},{name:'About Us', url: 'about'},{name: 'Contact', url: 'contact'}]
+const pages = [{name: 'Home', url:'/'},{name: 'FAQs', url: 'medicare-faqs'},{name:'Turning 65', url: 'turning-65'},{name:'Medicare Options', url: 'medicare-options'},{name:'About Us', url: 'about'},{name: 'Contact', url: 'contact'}]
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -65,7 +66,7 @@ function NavBar() {
             JMCole <br /> Group
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', color: 'var(--text-white)',  } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', color: 'var(--text-white)',  } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -100,14 +101,14 @@ function NavBar() {
             </Menu>
           </Box>
 
-          {/* Mobile */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', }, justifyContent: 'center', gap: 1.5 }}>
+          {/* Desktop */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',  }, justifyContent: 'center', gap: 1.5 }}>
             {pages.map((page) => (
               <Button
                 key={page.name}
                 onClick={() => handleNavigate(page.url)}
                 className='btn-link'
-                sx={{ my: 2, color: 'var(--text-white)', display: 'block' }}
+                sx={{ my: 2, color: 'var(--text-white)', display: 'block', lineHeight: 1 }}
               >
                 {page.name}
               </Button>
@@ -115,7 +116,7 @@ function NavBar() {
           </Box>
           <Box sx={{ flexGrow: 0,  }}>
             {/* CONTACT BUTTON  */}
-            <BasicButton text="Request A Call" />
+            <BasicButton text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

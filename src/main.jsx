@@ -5,10 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import ReactDOM from "react-dom/client";
 import Body from "./components/core/Body.jsx";
 import NotFound from "./components/pages/NotFound.jsx";
+import "../src/assets/fonts/fonts.css"
 
 const theme = createTheme({
   typography: {
-    fontFamily: "var(--crimson)",
+    fontFamily: "crimson",
   },
 });
 
