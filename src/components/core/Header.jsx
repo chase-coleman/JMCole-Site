@@ -43,7 +43,7 @@ function NavBar() {
 
 
   return (
-    <AppBar position="static" sx={{width: 'auto', backgroundColor: 'var(--red)', mx: 5, my: 1.5, borderRadius: '7.5px'}}>
+    <AppBar position="static" sx={{width: 'auto', backgroundColor: 'var(--blue)', mx: 5, my: 1.5, borderRadius: '7.5px'}}>
       <Container maxWidth="xl" disableGutters sx={{paddingLeft: '15px', paddingRight: '15px'}}>
         <Toolbar disableGutters >
           <Typography
@@ -94,7 +94,7 @@ function NavBar() {
               sx={{ display: { xs: 'block', md: 'none' }, '& .MuiList-padding': {paddingTop: 0, paddingBottom: 0}, '& .MuiPaper-root': {borderRadius: '7.5px'}  }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={() => handleNavigate(page.url)} sx={{color: 'var(--text-white)', backgroundColor: 'var(--red)'}}>
+                <MenuItem key={page.name} onClick={() => handleNavigate(page.url)} sx={{color: 'var(--text-white)', backgroundColor: 'var(--blue)'}}>
                   <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                 </MenuItem>
               ))}

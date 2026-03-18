@@ -18,4 +18,7 @@
 
 .btn-outlined:hover {
   transform: scale(1.1);
+  background-color: var(--blue) !important;
+  color: var(--text-white) !important;
+  /* border: none; */
 }
