@@ -2,6 +2,27 @@ import { BasicButton, OutlinedButton } from "../individual/Button";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { useMediaQuery } from "react-responsive";
 import { reviews } from "../../assets/reviews";
+import Marquee from "react-fast-marquee";
+
+const imgs = [
+  { src: "/Aflac-logo.webp", alt: "Aflac", href: "https://www.aflacmedicaresupplement.com/"},
+  { src: "/Atrio-logo.webp", alt: "Atrio", href: "https://www.atriohp.com/"},
+  { src: "/Devoted-logo.webp", alt: "Devoted", href: "https://www.devoted.com/"},
+  { src: "/Humana-logo.webp", alt: "Humana", href: "https://www.humana.com/"},
+  { src: "/Providence-logo.webp", alt: "Providence", href: "https://www.providencehealthplan.com/medicare/medicare-advantage-plans"},
+  { src: "/PS-logo.webp", alt: "Pacific Source", href: "https://medicare.pacificsource.com/"},
+  { src: "/Regence-logo.webp", alt: "Regence", href: "https://www.regence.com/medicare/plans"},
+  { src: "/UHC-logo.webp", alt: "UHC", href: "https://www.uhc.com/medicare"},
+  { src: "/Wellcare-logo.webp", alt: "Wellcare", href: "https://www.wellcare.com/en/medicare"},
+];
+
+const brokers = [
+  {name: "John Coleman", phone: "541-554-8382", email: "john@mprc.info", position:"Principal Broker", bio: ""},
+  {name: "Matt Buck", phone: "541-285-8998", email: "matt22buck@gmail.com", position:"Broker", bio: ""},
+  {name: "Garin Coleman", phone: "541-510-9685", email: "garin@mprc.info", position:"Broker", bio: ""},
+  {name: "JJ Peters", phone: "503-111-1111", email: "jj@mprc.info", position:"Broker", bio: ""},
+  {name: "Chase Coleman", phone: "541-554-5916", email: "chase@mprc.info", position:"Broker", bio: ""},
+]
 
 const Home = () => {
   const computerScreen = useMediaQuery({
@@ -9,9 +30,13 @@ const Home = () => {
     query: "(min-width:1200px)",
   });
 
+  const handleNav = (url) => {
+    window.open(url, '_blank')
+  }
+
   return (
     <>
-      <div className="flex flex-col items-center h-screen ml-9 mr-9 mt-5  gap-5">
+      <div className="flex flex-col items-center ml-9 mr-9 mt-5  gap-5">
         <div>
           <h1 className="header">Medicare can be confusing —</h1>
         </div>
@@ -20,8 +45,11 @@ const Home = () => {
         </div>
         <div className="flex text-center">
           <span className="body-text">
-            Proudly serving Oregon seniors since 2016.
+            JMCole Group has been proudly serving Oregon seniors since 2016.
           </span>
+          {/* <span className="body-text">
+            Proudly serving Oregon seniors since 2016.
+          </span> */}
         </div>
         <div className="p-2 w-screen lg:w-full sm:mt-2">
           <img
@@ -38,8 +66,8 @@ const Home = () => {
           <OutlinedButton text="Meet The Team" icon={<ArrowRightAltIcon />} />
         </div>
         <div
-          className="flex w-screen mt-4 p-8"
-          style={{ backgroundColor: "var(--blue)" }}
+          className="flex items-center w-screen mt-4 p-8 min-h-125"
+          style={{ backgroundColor: "var(--blue)"}}
         >
           {computerScreen && (
             <>
@@ -111,7 +139,7 @@ const Home = () => {
                 </span>
                 <span
                   className="body-text w-2/3 p-3 font-md md:font-xl"
-                  style={{ lineHeight: 1.3}}
+                  style={{ lineHeight: 1.3 }}
                 >
                   -{review.name}
                 </span>
@@ -170,6 +198,33 @@ const Home = () => {
               <span className="sr-only">Next</span>
             </span>
           </button>
+        </div>
+        <div
+          className="h-40 w-screen overflow-hidden" 
+        >
+          <Marquee speed={50} pauseOnHover>
+            {imgs.map(img => (
+              <img key={img.alt} className ="h-15 w-auto ml-6 mr-6 hover:cursor-pointer" src={img.src} alt={img.alt} onClick={() => handleNav(img.href)}/>
+            ))}
+          </Marquee>
+        </div>
+        <div className="flex flex-col justify-center gap-2 w-screen p-3 pt-5 min-h-125" style={{backgroundColor: 'var(--green)'}}>
+          <h2 className="header mb-8" style={{color: 'var(--text-white)'}}>Meet The Team</h2>
+          <div className="body-text flex flex-wrap justify-center gap-10 sm:gap-15" style={{color: 'var(--text-white)'}}>
+          {brokers.map(broker => (
+            <div key={broker.name} className="flex flex-col items-center gap-2">
+              <div className="bg-white w-24 h-36" style={{borderRadius: '75px'}}></div>
+              <span >{broker.name}</span>
+              <a className="underline  uppercase text-blue-500" href={broker.phone} style={{fontSize: '18px', color: 'var(--text-white)'}}>{broker.phone}</a>
+            </div>
+          ))}
+          </div>
+        </div>
+        <div className="flex flex-col items-center w-full p-8">
+          <h1 className="subheader">A Part of the Medicare Plans Resource Center</h1>
+          <img src="/mprc-logo.webp" alt="mprc" className="w-full sm:w-1/2"/>
+          <span className="body-text">1011 Valley River Way, Suite #116A</span>
+          <span className="body-text">Eugene, OR, 97401</span>
         </div>
       </div>
     </>

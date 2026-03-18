@@ -20,5 +20,11 @@
   transform: scale(1.1);
   background-color: var(--blue) !important;
   color: var(--text-white) !important;
-  /* border: none; */
+}
+
+.broker-basic {
+}
+
+@media screen and (min-width: 768px){
+
 }
