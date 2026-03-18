@@ -9,9 +9,11 @@ function App() {
 
   return (
     <>
-    <NavBar />
-    <Outlet />
-    <Footer />
+    <div className='flex flex-col items-center'>
+    <NavBar /> {/* Navbar */}
+    <Outlet /> {/* Renders whatever page the user is on*/}
+    <Footer /> {/* Disclaimers*/}
+    </div>
     </>
   )
 }
