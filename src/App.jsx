@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col w-full'>
     <NavBar /> {/* Navbar */}
     <Outlet /> {/* Renders whatever page the user is on*/}
     <Footer /> {/* Disclaimers*/}

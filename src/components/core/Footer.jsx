@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 const Footer = () => {
   return (
     <>
-    <Divider className='w-3/4 bg-[#BABABA]'/>
+    <Divider className='w-3/4 self-center bg-[#BABABA]'/>
     <div className="flex flex-col mx-auto items-center w-full text-center p-8 text-xs sm:text-[12px]" style={{color: '#BABABA'}}>
     <h1>DISCLAIMERS:</h1>
       <p>

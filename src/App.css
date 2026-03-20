@@ -2,12 +2,6 @@
 
 /* COMPONENT DEFAULTS */
 
-
-
-.btn-default {
-
-}
-
 .btn-default:hover {
   color: var(--text-white);
   transform: scale(1.1);
