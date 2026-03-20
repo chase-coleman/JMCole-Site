@@ -2,6 +2,8 @@ import { useMediaQuery } from "react-responsive";
 import Divider from "@mui/material/Divider";
 import { BasicButton } from "../individual/Button";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { useState } from "react";
+import ModalComponent from "../individual/Modal";
 
 const FAQs = () => {
   const lgScreen = useMediaQuery({
@@ -118,24 +120,35 @@ const FAQs = () => {
                 <span className="font-semibold">No</span> - Medicare is not
                 free, despite what some think.
               </span>
-              <span className="">
-                <span className="font-semibold">Part A</span> is paid for by the
-                taxes that you paid into for 10 years of full-time employment.
-              </span>
-              <span className="">
-                <span className="font-semibold">Part B</span> does have a
-                monthly cost that varies from year-to-year.
-              </span>
-              <span className="">
-                <span className="font-semibold">Part C</span> plans may have a
-                monthly premium, but it varies on the type of plan, company, and
-                specific plan.
-              </span>
-              <span className="">
-                <span className="font-semibold">Part D</span> are similar to
-                Part C plans in that the monthly premium is specific to the
-                company and plan specific.
-              </span>
+              <ul className="list-disc flex flex-col gap-2">
+                <li>
+                  <span className="">
+                    Part A is paid for by
+                    the taxes that you paid into for 10 years of full-time
+                    employment.
+                  </span>
+                </li>
+                <li>
+                  <span className="">
+                    Part B does have a
+                    monthly cost that varies from year-to-year.
+                  </span>
+                </li>
+                <li>
+                  <span className="">
+                    Part C plans may have
+                    a monthly premium, but it varies on the type of plan,
+                    company, and specific plan.
+                  </span>
+                </li>
+                <li>
+                  <span className="">
+                    Part D are similar to
+                    Part C plans in that the monthly premium is specific to the
+                    company and plan specific.
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
           <span className="body-text text-center !text-[.75em] md:!text-[1em]">
