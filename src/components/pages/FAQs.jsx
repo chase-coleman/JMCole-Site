@@ -1,7 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 import Divider from "@mui/material/Divider";
 import { BasicButton } from "../individual/Button";
-import PhoneIcon from '@mui/icons-material/Phone';
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const FAQs = () => {
   const lgScreen = useMediaQuery({
@@ -11,7 +11,7 @@ const FAQs = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-5 mb-5">
+      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-10 mb-5">
         <h1 className={lgScreen ? "header" : "subheader"}>
           Frequently Asked Questions
         </h1>
@@ -66,9 +66,12 @@ const FAQs = () => {
                 </span>
                 <ul className="list-disc">
                   <li>
-                    Private insurers offer two plan types. Each has trade-offs,
-                    and the right fit depends on your needs. We'll help you find
-                    it.
+                    Private insurers offer 2 plan types. Each has trade-offs,
+                    and{" "}
+                    <span className="underline">
+                      the right fit depends on your needs
+                    </span>
+                    . We'll help you find it. No one plan is best for everybody!
                   </li>
                 </ul>
               </div>
@@ -105,6 +108,48 @@ const FAQs = () => {
           style={{ backgroundColor: "var(--blue)" }}
         />
         {/* FAQ QUESTION 2 */}
+        <div className="body-text flex flex-col items-center gap-5">
+          <h3 className="subheader !text-[.75em] md:!text-[1em]">
+            "Is Medicare free? How much does it cost?"
+          </h3>
+          <div className="flex flex-col w-full lg:flex-row gap-5">
+            <div className="flex flex-col gap-2 md:gap-4">
+              <span className="">
+                <span className="font-semibold">No</span> - Medicare is not
+                free, despite what some think.
+              </span>
+              <span className="">
+                <span className="font-semibold">Part A</span> is paid for by the
+                taxes that you paid into for 10 years of full-time employment.
+              </span>
+              <span className="">
+                <span className="font-semibold">Part B</span> does have a
+                monthly cost that varies from year-to-year.
+              </span>
+              <span className="">
+                <span className="font-semibold">Part C</span> plans may have a
+                monthly premium, but it varies on the type of plan, company, and
+                specific plan.
+              </span>
+              <span className="">
+                <span className="font-semibold">Part D</span> are similar to
+                Part C plans in that the monthly premium is specific to the
+                company and plan specific.
+              </span>
+            </div>
+          </div>
+          <span className="body-text text-center !text-[.75em] md:!text-[1em]">
+            If your income is below a certain limit, you may be able for federal
+            and/or state financial assistance. If your income is above a certain
+            limit, you may have to pay more for your Medicare. We recommend
+            consulting with us to see regarding your situation.
+          </span>
+        </div>
+        <Divider
+          className="w-3/4 self-center"
+          style={{ backgroundColor: "var(--blue)" }}
+        />
+        {/* FAQ QUESTION 3 */}
         <div className="body-text flex flex-col items-center gap-5">
           <h3 className="subheader !text-[.75em] md:!text-[1em]">
             "Am I automatically signed up for Medicare at 65 or do I have to
@@ -154,7 +199,7 @@ const FAQs = () => {
           className="w-3/4 self-center"
           style={{ backgroundColor: "var(--blue)" }}
         />
-        {/* FAQ QUESTION 3 */}
+        {/* FAQ QUESTION 4 */}
         <div className="body-text flex flex-col items-center gap-5">
           <h3 className="subheader !text-[.75em] md:!text-[1em]">
             "Are there penalties if I do not sign up at the appropriate time?"
@@ -180,7 +225,7 @@ const FAQs = () => {
             style={{ backgroundColor: "var(--blue)" }}
           />
         </div>
-        {/* FAQ QUESTION 4 */}
+        {/* FAQ QUESTION 5 */}
         <div className="body-text flex flex-col items-center gap-5">
           <h3 className="subheader !text-[.75em] md:!text-[1em]">
             "If I continue working after I turn 65, can I remain on my employer
@@ -236,11 +281,30 @@ const FAQs = () => {
             className="w-3/4 self-center"
             style={{ backgroundColor: "var(--blue)" }}
           />
-          <div className="flex flex-col items-center gap-1 text-center font-semibold" style={{color: 'var(--blue)'}}>
-            <span>Did we answer your questions? Do you have more?</span>
-            <span>Click on the button below and fire away any questions that you have</span>
-            <span>Or let us know that you would like our help (remember, you pay nothing) and we will contact you.</span>
-            <BasicButton styling="w-1/2 sm:w-1/4" text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
+          <div
+            className="flex flex-col items-center gap-1 sm:gap-3 text-center"
+            style={{ color: "var(--blue)" }}
+          >
+            <span>
+              Now, that was a lot & we know it probably gave you more questions
+              than answers, but those are the most common questions that we get.
+            </span>
+            <span>
+              Click on the button below and fire away any questions that you
+              still have.
+            </span>
+            <span>
+              Or let us know that you would like our help (
+              <span className="italic font-semibold">
+                remember, you pay nothing
+              </span>
+              ) and we will contact you.
+            </span>
+            <BasicButton
+              styling="w-1/2 sm:w-1/4"
+              text="Request A Call"
+              icon={<PhoneIcon fontSize="small" />}
+            />
           </div>
         </div>
       </div>
