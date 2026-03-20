@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center ml-9 mr-9 mt-5  gap-5">
+      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-5">
         <div>
           <h1 className="header">Medicare can be confusing —</h1>
         </div>

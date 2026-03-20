@@ -2,14 +2,14 @@ import Button from "@mui/material/Button";
 import { useMediaQuery } from 'react-responsive'
 
 
-export const BasicButton = ({ text, icon }) => {
+export const BasicButton = ({ text, icon, styling }) => {
   const notPhone = useMediaQuery({ // used to display the icon only on larger screens, not on smaller phone screens.
       query: '(min-width:473px)'
     })
   return (
     <Button
       variant="contained"
-      className="btn-default"
+      className={"btn-default" + " " + styling}
       sx={{
         fontSize: ".7rem",
         backgroundColor: "var(--green)",
