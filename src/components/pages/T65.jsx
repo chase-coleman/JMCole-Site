@@ -1,12 +1,67 @@
+import { useMediaQuery } from "react-responsive";
+import Divider from "@mui/material/Divider";
+import { BasicButton } from "../individual/Button";
+import PhoneIcon from '@mui/icons-material/Phone';
 
 
 const T65 = () => {
+  const lgScreen = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
 
   return (
     <>
-    <h1>T65!</h1>
+      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-10 mb-5">
+        <h1 className={lgScreen ? "header" : "subheader"}>
+          Turning 65 & confused what to do?
+        </h1>
+        <Divider
+          className="w-3/4 self-center"
+          style={{ backgroundColor: "var(--blue)" }}
+        />
+        <div className="w-full body-text">
+          <img
+            src="/t65.webp"
+            alt="65th-birthday"
+            className="float-left w-full sm:w-1/2 mr-6 mb-4 rounded object-cover"
+          />
+          <p className="mb-4">
+            Medicare requires you to enroll in Part B within a 7-month window —
+            3 months before your birth month, your birth month itself, and 3
+            months after.
+          </p>
+          <p className="mb-4">
+            On top of that, if you don't enroll in a Part D drug plan at the
+            same time as Part B, you'll face a Late Enrollment Penalty (LEP) —
+            a fee added to your premium every month for life. Is this something
+            Medicare tells you upfront? No.
+          </p>
+          <p className="mb-4">
+            Unfortunately no one at the Social Security office is going to show
+            up and teach you what you else need to know or help you get signed
+            up. </p>
+            <p className="mb-4">
+            That's where we come in. We'll make sure you're enrolled at the
+            right time, guide you through Part B sign-up, and find the Part C
+            and D plans that are the right fit for you.
+          </p>
+          <p className="mb-4">
+            How can we do this? We can do this because we know Medicare. This is
+            what we do. Let us help you get what you deserve. And oh yeah - you
+            pay us nothing for our services. Ever. No seriously!
+          </p>
+          <p className="mb-4">
+            We will take care of it all for you, we will answer every question
+            and solve every problem with you. We will be your one stop Medicare
+            shop and you pay us nothing for our services.
+          </p>
+          <p>Request a call from us or call us yourself at 541-554-8382</p>
+
+        </div>
+        <BasicButton text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default T65;
