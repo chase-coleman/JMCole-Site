@@ -1,5 +1,8 @@
 import { useMediaQuery } from "react-responsive";
 import Divider from "@mui/material/Divider";
+import { BasicButton } from "../individual/Button";
+import PhoneIcon from '@mui/icons-material/Phone';
+
 
 const T65 = () => {
   const lgScreen = useMediaQuery({
@@ -8,7 +11,7 @@ const T65 = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-10 mb-5">
+      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-5 mb-5">
         <h1 className={lgScreen ? "header" : "subheader"}>
           Turning 65 & confused what to do?
         </h1>
@@ -50,10 +53,12 @@ const T65 = () => {
           <p className="mb-4">
             We will take care of it all for you, we will answer every question
             and solve every problem with you. We will be your one stop Medicare
-            shop and you pay us nothing for our services. Ever.
+            shop and you pay us nothing for our services.
           </p>
           <p>Request a call from us or call us yourself at 541-554-8382</p>
+
         </div>
+        <BasicButton text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
       </div>
     </>
   );
