@@ -11,7 +11,7 @@ const T65 = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-5 mb-5">
+      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-10 mb-5">
         <h1 className={lgScreen ? "header" : "subheader"}>
           Turning 65 & confused what to do?
         </h1>

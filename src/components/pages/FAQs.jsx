@@ -229,8 +229,8 @@ const FAQs = () => {
           <div className="flex flex-col lg:flex-row gap-5">
             <div className="w-full">
               <img
-                src="/couple.webp"
-                alt="couple"
+                src="/man-working.webp"
+                alt="man-working"
                 className="float-left w-full sm:w-1/2 mr-6 mb-4 rounded object-cover"
               />
               <span className="font-semibold">
