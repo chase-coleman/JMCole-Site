@@ -3,6 +3,7 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { useMediaQuery } from "react-responsive";
 import { reviews } from "../../assets/reviews";
 import Marquee from "react-fast-marquee";
+import { brokers } from "../../assets/brokers"
 
 const imgs = [
   { src: "/Aflac-logo.webp", alt: "Aflac", href: "https://www.aflacmedicaresupplement.com/"},
@@ -16,13 +17,6 @@ const imgs = [
   { src: "/Wellcare-logo.webp", alt: "Wellcare", href: "https://www.wellcare.com/en/medicare"},
 ];
 
-const brokers = [
-  {name: "John Coleman", phone: "541-554-8382", email: "john@mprc.info", position:"Principal Broker", bio: ""},
-  {name: "Matt Buck", phone: "541-285-8998", email: "matt22buck@gmail.com", position:"Broker", bio: ""},
-  {name: "Garin Coleman", phone: "541-510-9685", email: "garin@mprc.info", position:"Broker", bio: ""},
-  {name: "JJ Peters", phone: "503-111-1111", email: "jj@mprc.info", position:"Broker", bio: ""},
-  {name: "Chase Coleman", phone: "541-554-5916", email: "chase@mprc.info", position:"Broker", bio: ""},
-]
 
 const Home = () => {
   const computerScreen = useMediaQuery({

@@ -9,7 +9,7 @@
   --bg: #F2F2F2;
   --blue: #04446C;
   --green: #52691B;
-  --green-dark: #0c271d;
+  --grey: #07629B;
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -73,6 +73,7 @@ body {
   color: var(--text);
   font-size: 1.3em;
 }
+
 
 @media screen and (max-width: 768px){
   .header {
