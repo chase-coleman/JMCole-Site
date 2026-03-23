@@ -38,7 +38,7 @@ const T65 = () => {
           </p>
           <p className="mb-4">
             Unfortunately no one at the Social Security office is going to show
-            up and teach you what you else need to know or help you get signed
+            up and teach you what else you need to know or help you get signed
             up. </p>
             <p className="mb-4">
             That's where we come in. We'll make sure you're enrolled at the
