@@ -12,7 +12,7 @@ const Body = () => {
   if (path == "/medicare-faqs") return <FAQs />
   if (path == "/turning-65") return <T65 />
   if (path == "/contact") return <Contact />
-  if (path == "/medicare-options") return <Options />
+  if (path.startsWith("/medicare-options")) return <Options />
   return <Home />
 }
 

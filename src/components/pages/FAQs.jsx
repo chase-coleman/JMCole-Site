@@ -2,8 +2,6 @@ import { useMediaQuery } from "react-responsive";
 import Divider from "@mui/material/Divider";
 import { BasicButton } from "../individual/Button";
 import PhoneIcon from "@mui/icons-material/Phone";
-import { useState } from "react";
-import ModalComponent from "../individual/Modal";
 
 const FAQs = () => {
   const lgScreen = useMediaQuery({

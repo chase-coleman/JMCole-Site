@@ -25,8 +25,10 @@ ReactDOM.createRoot(root).render(
             <Route path="turning-65" element={<Body />} />
             <Route path="contact" element={<Body />} />
             <Route path="medicare-faqs" element={<Body />} />
-            <Route path="medicare-options" element={<Body />} />
-            <Route path="*" element={NotFound} />
+            <Route path="medicare-options" element={<Body />}>
+              <Route path=":type" element={<Body />}/>
+            </Route>
+            <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </ThemeProvider>
