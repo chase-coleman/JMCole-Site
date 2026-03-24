@@ -29,6 +29,12 @@ const About = () => {
             <Broker key={broker.name} broker={broker} background={broker.background}/>
           ))}
         </div>
+          <div className="body-text flex flex-col items-center w-full p-8">
+          <h1 className="subheader">A Part of the Medicare Plans Resource Center</h1>
+          <img src="/mprc-logo.webp" alt="mprc" className="w-full sm:w-1/2"/>
+          <span className="!text-xl">1011 Valley River Way, Suite #116A</span>
+          <span className="!text-xl">Eugene, OR, 97401</span>
+        </div>
         <BasicButton text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
       </div>
     </>

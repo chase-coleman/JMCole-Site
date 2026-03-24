@@ -2,8 +2,6 @@ import { useMediaQuery } from "react-responsive";
 import Divider from "@mui/material/Divider";
 import { BasicButton } from "../individual/Button";
 import PhoneIcon from "@mui/icons-material/Phone";
-import { useState } from "react";
-import ModalComponent from "../individual/Modal";
 
 const FAQs = () => {
   const lgScreen = useMediaQuery({
@@ -126,8 +124,8 @@ const FAQs = () => {
                 </li>
                 <li>
                   <span className="">
-                    Part D are similar to Part C plans in that the monthly
-                    premium is specific to the company and plan specific.
+                    Part D is similar to Part C plans in that the monthly
+                    premium is specific to the company and plan.
                   </span>
                 </li>
               </ul>
@@ -162,20 +160,20 @@ const FAQs = () => {
                 </span>
                 <ul className="list-disc flex flex-col gap-2">
                   <li>
-                    If you're already receiving Social Security at 65 Your Part
+                    If you're already receiving Social Security at 65 your Part
                     A & B card arrives by mail before your birthday. Medicare
                     starts the 1st of your birth month, and your Part B premium
                     is deducted from your SS benefits. No action needed.
                   </li>
                   <li>
                     If you're on Social Security but staying on employer
-                    coverage You'll need to actively refuse Part B by following
+                    coverage you'll need to actively refuse Part B by following
                     the instructions on the card and returning it. (This avoids
                     the monthly Part B premium while you remain on your
                     employer's plan.)
                   </li>
                   <li>
-                    If you haven't claimed Social Security yet You'll need to
+                    If you haven't claimed Social Security yet you'll need to
                     apply for Part B yourself — either at 65, or when you retire
                     and lose your employer's group coverage.
                   </li>
