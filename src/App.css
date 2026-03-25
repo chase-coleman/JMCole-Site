@@ -41,6 +41,7 @@
   transform: translateX(-50%) scaleX(1);
 }
 
-@media screen and (min-width: 768px){
-
+.input-container {
+  display: flex;
+  flex-direction: column;
 }
