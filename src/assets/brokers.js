@@ -13,7 +13,7 @@ export const brokers = [
     email: "matt22buck@gmail.com",
     position: "Broker",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
-    background: "var(--grey)"
+    background: "var(--blue-alt)"
   },
   {
     name: "Garin Coleman",
@@ -29,7 +29,7 @@ export const brokers = [
     email: "jj@mprc.info",
     position: "Broker",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
-    background: "var(--grey)"
+    background: "var(--blue-alt)"
   },
   {
     name: "Chase Coleman",
