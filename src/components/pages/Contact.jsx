@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import emailjs from "@emailjs/browser";
 import ModalBox from "../individual/Modal";
 
-// Handles the input validation errors
+// Handles the input validation errors & rendering them
 function FormField({ id, label, error, children }) {
   return (
     <div className="flex flex-col w-full">
@@ -28,6 +28,7 @@ function FormField({ id, label, error, children }) {
   );
 }
 
+// Env variables for EmailJS
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;

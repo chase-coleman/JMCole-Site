@@ -81,12 +81,8 @@ const FAQs = () => {
         </div>
         <span
           className="body-text text-center p-3 mt-2 rounded-sm"
-          style={{
-            backgroundColor: "var(--green)",
-            color: "var(--text-white)",
-          }}
         >
-          Sound confusing yet? That's why we are here!
+          Sound confusing yet? <span className="underline">That's why we are here!</span>
         </span>
         <Divider
           className="w-3/4 self-center"
@@ -281,7 +277,6 @@ const FAQs = () => {
               ) and we will contact you.
             </span>
             <BasicButton
-              styling="w-1/2 sm:w-1/4"
               text="Request A Call"
               icon={<PhoneIcon fontSize="small" />}
             />
