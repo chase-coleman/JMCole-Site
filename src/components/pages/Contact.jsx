@@ -1,11 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Oval } from "react-loader-spinner";
 import { useState, useRef } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import CloseIcon from "@mui/icons-material/Close";
 import emailjs from "@emailjs/browser";
+import ModalBox from "../individual/Modal";
 
 // Handles the input validation errors
 function FormField({ id, label, error, children }) {
@@ -36,10 +34,10 @@ const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [err, setErr] = useState("")
-  const [errShow, setErrShow] = useState(false)
-  const form = useRef('#inputForm')
+  const [err, setErr] = useState("");
+  const form = useRef("#inputForm");
 
   const {
     register,
@@ -51,37 +49,36 @@ const Contact = () => {
 
   const sendRequest = () => {
     // Handles formatting and sending email to EmailJS service.
-     return emailjs
+    return emailjs
       .sendForm(serviceID, templateID, form.current, {
         publicKey: publicKey,
       })
       .then(
         () => {
-          return {status: "Success"}
+          return { status: "Success" };
         },
         (err) => {
-          return {status: "Failed", error: err}
+          return { status: "Failed", error: err };
         },
       );
-
-    // reset();
-    // setSubmitting(false);
   };
 
   const onSubmit = async () => {
-    setSubmitting(true)
-    const request = await sendRequest()
-    if (request?.status === "Failed"){
-      setErr(request?.error)
-      setShowErr(true)
-    } else {
-      setSuccess(true)
-      reset()
-      setSubmitting(false)
+    setSubmitting(true);
+    const request = await sendRequest();
+    if (request?.status === "Failed") {
+      // here I am waiting 1 second before showing any error messages so the user feels like we actually tried
+      // submitting a request instead of immediately showing an error
+      setTimeout(() => {
+        setShowModal(true)
+        setErr(request?.error);
+        setSubmitting(false);
+      }, 1000)
+    } else { // handles successfull submission to EmailJS service
+      setShowModal(true)
+      reset();
+      setSubmitting(false);
     }
-    // setTimeout(() => {
-    //   sendRequest(data);
-    // }, 2000);
   };
 
   return (
@@ -96,24 +93,21 @@ const Contact = () => {
         </div>
         <Modal
           className="relative"
-          open={success}
+          open={showModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className="modal">
-            <button
-              className="absolute top-2 right-2 hover:cursor-pointer"
-              onClick={() => setSuccess(false)}
-            >
-              <CloseIcon />
-            </button>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Your request has been submitted successfully.
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              One of our brokers will be calling you as soon as possible!
-            </Typography>
-          </Box>
+          {err ? (
+            <ModalBox
+              status={false}
+              setShowModal={setShowModal}
+            />
+          ) : (
+            <ModalBox
+              status={true}
+              setShowModal={setShowModal}
+            />
+          )}
         </Modal>
         {submitting ? (
           <Oval
@@ -129,7 +123,7 @@ const Contact = () => {
         ) : (
           <div className="body-text w-full sm:w-2/3 md:w-[550px] bg-[#05567a] rounded-xl">
             <form
-            id="inputForm"
+              id="inputForm"
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col items-center gap-5 md:gap-10 p-5 text-black"
             >

@@ -46,13 +46,24 @@
   flex-direction: column;
 }
 
-.modal {
+.modal-success {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
   background-color: var(--green);
+  padding: 1em;
+  color: var(--text-white);
+  border: 2px solid #F2F2F2;
+}
+.modal-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #c20228;
   padding: 1em;
   color: var(--text-white);
   border: 2px solid #F2F2F2;
