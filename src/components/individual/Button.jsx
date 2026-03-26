@@ -1,14 +1,16 @@
 import Button from "@mui/material/Button";
 import { useMediaQuery } from 'react-responsive'
-
+import { useNavigate } from "react-router";
 
 export const BasicButton = ({ text, icon, styling }) => {
+  const navigate = useNavigate()
   const notPhone = useMediaQuery({ // used to display the icon only on larger screens, not on smaller phone screens.
       query: '(min-width:473px)'
     })
   return (
     <Button
       variant="contained"
+      onClick={() => navigate('/contact')}
       className={"btn-default" + " " + styling}
       sx={{
         fontSize: ".7rem",
@@ -30,6 +32,7 @@ export const BasicButton = ({ text, icon, styling }) => {
 };
 
 export const OutlinedButton = ({ text, icon }) => {
+  const navigate = useNavigate()
   const notPhone = useMediaQuery({ 
     query: '(min-width:473px)'
   })
@@ -37,6 +40,7 @@ export const OutlinedButton = ({ text, icon }) => {
   return (
     <Button
       variant="contained"
+      onClick={() => navigate("/about")}
       className="btn-outlined"
       sx={{
         fontSize: ".7rem",
