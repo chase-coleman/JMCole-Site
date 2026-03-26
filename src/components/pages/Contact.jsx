@@ -1,21 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Oval } from "react-loader-spinner";
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { useState, useRef } from "react";
 import Modal from "@mui/material/Modal";
-import CloseIcon from '@mui/icons-material/Close';
-
-/*
-TO DO :
-- Handle input savings to localStorage on change so if user refreshes/loses page info is retained
-- Handle getting data from localStorage and setting it to value of the inputs
-- Handle info submission ( zod? )
-- clear fields on submission success
-- show loader when submitting
-
-*/
+import emailjs from "@emailjs/browser";
+import ModalBox from "../individual/Modal";
 
 // Handles the input validation errors
 function FormField({ id, label, error, children }) {
@@ -40,10 +28,16 @@ function FormField({ id, label, error, children }) {
   );
 }
 
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [err, setErr] = useState("");
+  const form = useRef("#inputForm");
 
   const {
     register,
@@ -53,17 +47,38 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const submitRequest = (data) => {
-    
-    reset();
-    setSubmitting(false);
+  const sendRequest = () => {
+    // Handles formatting and sending email to EmailJS service.
+    return emailjs
+      .sendForm(serviceID, templateID, form.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          return { status: "Success" };
+        },
+        (err) => {
+          return { status: "Failed", error: err };
+        },
+      );
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async () => {
     setSubmitting(true);
-    setTimeout(() => {
-      submitRequest(data);
-    }, 2000);
+    const request = await sendRequest();
+    if (request?.status === "Failed") {
+      // here I am waiting 1 second before showing any error messages so the user feels like we actually tried
+      // submitting a request instead of immediately showing an error
+      setTimeout(() => {
+        setShowModal(true)
+        setErr(request?.error);
+        setSubmitting(false);
+      }, 1000)
+    } else { // handles successfull submission to EmailJS service
+      setShowModal(true)
+      reset();
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -78,19 +93,21 @@ const Contact = () => {
         </div>
         <Modal
           className="relative"
-          open={!success}
+          open={showModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className="modal">
-            <button className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => setSuccess(false)}><CloseIcon /></button>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Your request has been submitted successfully.
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              One of our brokers will be calling you as soon as possible!
-            </Typography>
-          </Box>
+          {err ? (
+            <ModalBox
+              status={false}
+              setShowModal={setShowModal}
+            />
+          ) : (
+            <ModalBox
+              status={true}
+              setShowModal={setShowModal}
+            />
+          )}
         </Modal>
         {submitting ? (
           <Oval
@@ -106,6 +123,7 @@ const Contact = () => {
         ) : (
           <div className="body-text w-full sm:w-2/3 md:w-[550px] bg-[#05567a] rounded-xl">
             <form
+              id="inputForm"
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col items-center gap-5 md:gap-10 p-5 text-black"
             >
@@ -171,7 +189,7 @@ const Contact = () => {
                 <input
                   id="phoneNumber"
                   type="tel"
-                  {...register("phone", {
+                  {...register("phoneNumber", {
                     required: "Phone number is required",
                     validate: (value) => {
                       const digits = value.replace(/\D/g, "");
