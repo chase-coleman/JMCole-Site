@@ -1,21 +1,11 @@
 import { useForm } from "react-hook-form";
 import { Oval } from "react-loader-spinner";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import CloseIcon from '@mui/icons-material/Close';
-
-/*
-TO DO :
-- Handle input savings to localStorage on change so if user refreshes/loses page info is retained
-- Handle getting data from localStorage and setting it to value of the inputs
-- Handle info submission ( zod? )
-- clear fields on submission success
-- show loader when submitting
-
-*/
+import CloseIcon from "@mui/icons-material/Close";
+import emailjs from "@emailjs/browser";
 
 // Handles the input validation errors
 function FormField({ id, label, error, children }) {
@@ -40,10 +30,14 @@ function FormField({ id, label, error, children }) {
   );
 }
 
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [open, setOpen] = useState(false);
+  const form = useRef('#inputForm')
 
   const {
     register,
@@ -53,17 +47,30 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const submitRequest = (data) => {
-    
-    reset();
-    setSubmitting(false);
+  const sendRequest = () => {
+    emailjs
+      .sendForm(serviceID, templateID, form.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          console.log("success!");
+        },
+        (error) => {
+          console.log("Failed...", error);
+        },
+      );
+
+    // reset();
+    // setSubmitting(false);
   };
 
   const onSubmit = (data) => {
-    setSubmitting(true);
-    setTimeout(() => {
-      submitRequest(data);
-    }, 2000);
+    sendRequest()
+    // setSubmitting(true);
+    // setTimeout(() => {
+    //   sendRequest(data);
+    // }, 2000);
   };
 
   return (
@@ -78,12 +85,17 @@ const Contact = () => {
         </div>
         <Modal
           className="relative"
-          open={!success}
+          open={success}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
           <Box className="modal">
-            <button className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => setSuccess(false)}><CloseIcon /></button>
+            <button
+              className="absolute top-2 right-2 hover:cursor-pointer"
+              onClick={() => setSuccess(false)}
+            >
+              <CloseIcon />
+            </button>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Your request has been submitted successfully.
             </Typography>
@@ -106,6 +118,7 @@ const Contact = () => {
         ) : (
           <div className="body-text w-full sm:w-2/3 md:w-[550px] bg-[#05567a] rounded-xl">
             <form
+            id="inputForm"
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col items-center gap-5 md:gap-10 p-5 text-black"
             >
@@ -171,7 +184,7 @@ const Contact = () => {
                 <input
                   id="phoneNumber"
                   type="tel"
-                  {...register("phone", {
+                  {...register("phoneNumber", {
                     required: "Phone number is required",
                     validate: (value) => {
                       const digits = value.replace(/\D/g, "");
