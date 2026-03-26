@@ -37,6 +37,8 @@ const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [err, setErr] = useState("")
+  const [errShow, setErrShow] = useState(false)
   const form = useRef('#inputForm')
 
   const {
@@ -48,16 +50,17 @@ const Contact = () => {
   } = useForm();
 
   const sendRequest = () => {
-    emailjs
+    // Handles formatting and sending email to EmailJS service.
+     return emailjs
       .sendForm(serviceID, templateID, form.current, {
         publicKey: publicKey,
       })
       .then(
         () => {
-          console.log("success!");
+          return {status: "Success"}
         },
-        (error) => {
-          console.log("Failed...", error);
+        (err) => {
+          return {status: "Failed", error: err}
         },
       );
 
@@ -65,9 +68,17 @@ const Contact = () => {
     // setSubmitting(false);
   };
 
-  const onSubmit = (data) => {
-    sendRequest()
-    // setSubmitting(true);
+  const onSubmit = async () => {
+    setSubmitting(true)
+    const request = await sendRequest()
+    if (request?.status === "Failed"){
+      setErr(request?.error)
+      setShowErr(true)
+    } else {
+      setSuccess(true)
+      reset()
+      setSubmitting(false)
+    }
     // setTimeout(() => {
     //   sendRequest(data);
     // }, 2000);
