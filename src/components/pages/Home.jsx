@@ -41,7 +41,7 @@ const questions = [
   {
     tag: "Noise",
     q: "What about all the stuff they say on TV?",
-    a: "Not every plan advertised nationally is offered in your area. We'll show you what you can actually enroll in.",
+    a: "Not every plan advertised is offered in your area, or available to you. We'll show you what you can actually enroll in.",
     to: "/medicare-faqs",
   },
   {
@@ -87,7 +87,7 @@ const Home = () => {
 
             <p className="lede measure">
               JMCole Group has been proudly serving Oregon seniors since 2016.
-              We read the fine print, compare the carriers in your area, and
+              We compare the carriers in your area and
               stay with you long after you enroll.
             </p>
 
