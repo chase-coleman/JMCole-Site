@@ -19,7 +19,7 @@ const AdvantagePlan = () => {
         <div className="spec-row">
           <span className="spec-key">Copays</span>
           <p className="spec-val">
-            Advantage plans do carry some copays — for example, you may pay
+            Advantage plans do carry some copays. For example, you may pay
             around $40 for a specialist visit.
           </p>
         </div>
@@ -28,7 +28,7 @@ const AdvantagePlan = () => {
           <p className="spec-val">
             Most Advantage plans include Part D drug coverage built in, meaning
             you don't need to purchase a separate drug plan. Medigap plans do not
-            — you would need to purchase a separate drug plan.
+            so you would need to purchase a separate drug plan.
           </p>
         </div>
         <div className="spec-row">
@@ -49,7 +49,7 @@ const AdvantagePlan = () => {
         </div>
       </div>
 
-      <div className="card card-lit">
+      <div className="card">
         <p className="body">
           Medicare Advantage plans vary in both what they cover and which
           doctors and hospitals are in their network, depending on the plan and

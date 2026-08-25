@@ -29,7 +29,7 @@ const MedigapPlan = () => {
           <span className="spec-key">Drug coverage</span>
           <p className="spec-val">
             Medigap plans do not include prescription drug coverage. You'll need
-            to purchase a separate Part D plan — another reason to work with a
+            to purchase a separate Part D plan. Another reason to work with a
             broker who can bundle your coverage correctly.
           </p>
         </div>
@@ -43,10 +43,10 @@ const MedigapPlan = () => {
         </div>
       </div>
 
-      <div className="card card-lit">
+      <div className="card">
         <p className="body">
           One thing worth knowing: with Medigap/Supplement plans, the coverage is
-          standardized — a Plan G is identical regardless of which insurance
+          standardized. A Plan G is identical regardless of which insurance
           company offers it.
         </p>
       </div>

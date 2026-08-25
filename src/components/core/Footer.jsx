@@ -33,12 +33,8 @@ const Footer = () => {
             </div>
             <p className="body max-w-xs !text-sm">
               An independent Medicare brokerage serving Oregon since 2016.
-              Licensed in multiple states.
+              Licensed in multiple states. Our guidance is always free.
             </p>
-            <span className="pill self-start">
-              <span className="pill-dot" aria-hidden="true" />
-              Always $0 to you
-            </span>
           </div>
 
           {/* Link columns */}

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 
 /*
- * Both buttons keep their original behaviour — the filled one routes to the
- * contact form, the ghost one to the team page — they are just styled with the
+ * Both buttons keep their original behaviour: the filled one routes to the
+ * contact form, the ghost one to the team page. They just use the
  * shared .btn classes now instead of MUI.
  */
 

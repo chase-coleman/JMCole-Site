@@ -5,7 +5,6 @@ const NotFound = () => {
 
   return (
     <section className="wrap flex flex-1 flex-col items-center justify-center gap-5 py-32 text-center">
-      <span className="eyebrow">Error</span>
       <p
         className="m-0 font-bold leading-none"
         style={{
@@ -14,12 +13,12 @@ const NotFound = () => {
           letterSpacing: "-.04em",
         }}
       >
-        <span className="grad-text">404</span>
+        404
       </p>
       <h1 className="h2">We couldn't find that page.</h1>
       <p className="lede measure">
-        The page may have moved, or it never existed. Head back and we'll get you
-        where you were going.
+        The page may have moved, or it may never have existed. Head back and
+        we'll get you where you were going.
       </p>
       <button className="btn btn-primary btn-lg mt-2" onClick={() => navigate("/")}>
         Back to home

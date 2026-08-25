@@ -47,7 +47,7 @@ const DrugPlan = () => {
         </div>
       </div>
 
-      <div className="card card-lit">
+      <div className="card">
         <p className="body">
           With the wide variety of available PDPs, it is not advisable to try to
           figure it all out yourself. Let us help you.

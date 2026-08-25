@@ -35,8 +35,8 @@ const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
 const promises = [
-  "A real broker calls you — not a call centre.",
-  "No cost, and no obligation to enrol in anything.",
+  "One of our brokers calls you, not a call centre.",
+  "No cost, and no obligation to enroll in anything.",
   "We compare the carriers available where you live.",
 ];
 
@@ -93,13 +93,12 @@ const Contact = () => {
     <>
       <section className="wrap pt-16 pb-8 sm:pt-20">
         <div className="flex flex-col gap-5">
-          <span className="eyebrow">Contact</span>
-          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.75rem)]">
-            Get in <span className="grad-text">touch</span>.
+          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.5rem)]">
+            Get in touch
           </h1>
           <p className="lede measure">
-            We'd love to help. Fill this out and one of our brokers will reach
-            out — it costs you nothing.
+            Fill this out and one of our brokers will get back to you. It costs
+            you nothing.
           </p>
         </div>
       </section>
