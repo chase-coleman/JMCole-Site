@@ -31,13 +31,12 @@ const Options = () => {
     <>
       <section className="wrap pt-16 pb-10 sm:pt-20">
         <div className="flex flex-col gap-5">
-          <span className="eyebrow">Coverage</span>
-          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.75rem)]">
-            Medicare <span className="grad-text">options</span>.
+          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.5rem)]">
+            Medicare options
           </h1>
           <p className="lede measure">
-            Three routes, three sets of trade-offs. Pick one to see how it
-            actually works.
+            Three routes, each with its own trade-offs. Pick one to see how it
+            works.
           </p>
         </div>
 
@@ -69,24 +68,23 @@ const Options = () => {
         {planComponents[active]}
       </section>
 
-      <section className="wrap pb-24">
-        <div
-          className="flex flex-col items-center gap-5 rounded-[var(--r-xl)] border px-6 py-12 text-center"
-          style={{ borderColor: "var(--line)", background: "var(--surface)" }}
-        >
-          <span className="eyebrow eyebrow-green">No cost, no obligation</span>
-          <h2 className="h2 !text-[clamp(1.5rem,1.1rem+1.6vw,2.1rem)]">
-            Not sure which one fits?
-          </h2>
-          <p className="lede measure">
-            That's the whole job. Tell us about your doctors, your prescriptions
-            and your budget, and we'll narrow it down with you.
-          </p>
-          <BasicButton
-            text="Request a call"
-            styling="btn-lg"
-            icon={<ArrowForwardIcon className="btn-arrow" sx={{ fontSize: 18 }} />}
-          />
+      <section className="border-t section-sm" style={{ borderColor: "var(--line)", background: "var(--surface-2)" }}>
+        <div className="wrap flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2">
+            <h2 className="h2 !text-[clamp(1.4rem,1.1rem+1.2vw,1.85rem)]">
+              Not sure which one fits?
+            </h2>
+            <p className="body">
+              Tell us about your doctors, your prescriptions and your budget, and
+              we'll narrow it down with you.
+            </p>
+          </div>
+          <div className="flex-none">
+            <BasicButton
+              text="Request a call"
+              icon={<ArrowForwardIcon className="btn-arrow" sx={{ fontSize: 16 }} />}
+            />
+          </div>
         </div>
       </section>
     </>

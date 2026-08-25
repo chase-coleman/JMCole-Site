@@ -46,7 +46,7 @@ function NavBar() {
   return (
     <header className={`nav ${stuck || open ? 'is-stuck' : ''}`}>
       <div className="wrap nav-inner">
-        <button className="brand" onClick={() => handleNavigate('/')} aria-label="JMCole Group — home">
+        <button className="brand" onClick={() => handleNavigate('/')} aria-label="JMCole Group, home">
           <span className="brand-mark" aria-hidden="true">JM</span>
           <span className="brand-name">JMCole&nbsp;Group</span>
         </button>

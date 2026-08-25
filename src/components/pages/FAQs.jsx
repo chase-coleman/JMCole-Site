@@ -2,10 +2,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { BasicButton } from "../individual/Button";
 
-const Faq = ({ n, question, defaultOpen = false, children }) => (
+const Faq = ({ question, defaultOpen = false, children }) => (
   <details className="faq" open={defaultOpen}>
     <summary>
-      <span className="faq-num">{String(n).padStart(2, "0")}</span>
       {question}
       <ExpandMoreIcon className="faq-chevron" fontSize="small" />
     </summary>
@@ -18,22 +17,21 @@ const FAQs = () => {
     <>
       <section className="wrap pt-16 pb-10 sm:pt-20">
         <div className="flex flex-col gap-5">
-          <span className="eyebrow">Reference</span>
-          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.75rem)]">
-            Frequently asked <span className="grad-text">questions</span>.
+          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.5rem)]">
+            Frequently asked questions
           </h1>
           <p className="lede measure">
-            The five things we get asked most. If yours isn't here, ask us
-            directly — that's what we're for.
+            These are the five we get asked most. If yours isn't here, ask us
+            directly.
           </p>
         </div>
       </section>
 
       <section className="wrap pb-20">
         <div className="flex flex-col gap-3">
-          <Faq n={1} question="Are there different parts to Medicare?" defaultOpen>
+          <Faq question="Are there different parts to Medicare?" defaultOpen>
             <p>
-              <strong>Yes — there are actually 4 parts.</strong>
+              <strong>Yes - there are actually 4 parts.</strong>
             </p>
             <img
               src="/medicare-parts.webp"
@@ -41,20 +39,20 @@ const FAQs = () => {
               className="w-full rounded-[var(--r)] sm:float-right sm:ml-6 sm:mb-4 sm:w-1/2"
               style={{ border: "1px solid var(--line)" }}
             />
-            <p><strong>Part A — Hospital coverage</strong></p>
+            <p><strong>Part A - Hospital coverage</strong></p>
             <ul>
               <li>Automatically granted at 65, or after 24 months on disability.</li>
             </ul>
-            <p><strong>Part B — Doctor coverage</strong></p>
+            <p><strong>Part B - Doctor coverage</strong></p>
             <ul>
               <li>
                 You have a 7-month enrollment window around your 65th birthday.
                 If you're still working with group coverage, you may qualify for
                 a Special Enrollment Period. Every situation is a little
-                different — contact us to make sure you're covered correctly.
+                different, so contact us to make sure you're covered correctly.
               </li>
             </ul>
-            <p><strong>Part C — Medicare Advantage &amp; Medigap</strong></p>
+            <p><strong>Part C - Medicare Advantage &amp; Medigap</strong></p>
             <ul>
               <li>
                 Private insurers offer 2 plan types. Each has trade-offs, and the
@@ -62,7 +60,7 @@ const FAQs = () => {
                 plan is best for everybody.
               </li>
             </ul>
-            <p><strong>Part D — Drug coverage</strong></p>
+            <p><strong>Part D - Drug coverage</strong></p>
             <ul>
               <li>
                 Offered by private insurers, either standalone or bundled with a
@@ -74,9 +72,9 @@ const FAQs = () => {
             </p>
           </Faq>
 
-          <Faq n={2} question="Is Medicare free? How much does it cost?">
+          <Faq question="Is Medicare free? How much does it cost?">
             <p>
-              <strong>No</strong> — Medicare is not free, despite what some think.
+              <strong>No</strong> - Medicare is not free, despite what some think.
             </p>
             <ul>
               <li>
@@ -101,7 +99,7 @@ const FAQs = () => {
             </p>
           </Faq>
 
-          <Faq n={3} question="Am I automatically signed up for Medicare at 65, or do I have to apply?">
+          <Faq question="Am I automatically signed up for Medicare at 65, or do I have to apply?">
             <p><strong>The answer is: it depends.</strong></p>
             <p>As stated above, Part A begins automatically at 65.</p>
             <p><strong>Part B enrollment depends on your situation:</strong></p>
@@ -120,7 +118,7 @@ const FAQs = () => {
               </li>
               <li>
                 If you haven't claimed Social Security yet, you'll need to apply
-                for Part B yourself — either at 65, or when you retire and lose
+                for Part B yourself, either at 65 or when you retire and lose
                 your employer's group coverage.
               </li>
             </ul>
@@ -130,10 +128,10 @@ const FAQs = () => {
             </p>
           </Faq>
 
-          <Faq n={4} question="Are there penalties if I do not sign up at the appropriate time?">
+          <Faq question="Are there penalties if I do not sign up at the appropriate time?">
             <p>
               <strong>
-                Simply put — yes there is. The federal government requires that
+                Simply put, yes there is. The federal government requires that
                 Medicare eligible people enroll in Part B and also acquire Part D
                 (a drug plan).
               </strong>
@@ -146,7 +144,7 @@ const FAQs = () => {
             </p>
           </Faq>
 
-          <Faq n={5} question="If I keep working after 65, can I stay on my employer's insurance without a penalty?">
+          <Faq question="If I keep working after 65, can I stay on my employer's insurance without a penalty?">
             <img
               src="/man-working.webp"
               alt="Working past 65"
@@ -179,24 +177,23 @@ const FAQs = () => {
         </div>
       </section>
 
-      <section className="wrap pb-24">
-        <div
-          className="flex flex-col items-center gap-5 rounded-[var(--r-xl)] border px-6 py-12 text-center"
-          style={{ borderColor: "var(--line)", background: "var(--surface)" }}
-        >
-          <span className="eyebrow eyebrow-green">Still have questions?</span>
-          <h2 className="h2 max-w-2xl !text-[clamp(1.5rem,1.1rem+1.6vw,2.1rem)]">
-            That was a lot. Fire away with whatever is left.
-          </h2>
-          <p className="lede measure">
-            Or just let us know you'd like our help — remember, you pay nothing —
-            and we'll contact you.
-          </p>
-          <BasicButton
-            text="Request a call"
-            styling="btn-lg"
-            icon={<ArrowForwardIcon className="btn-arrow" sx={{ fontSize: 18 }} />}
-          />
+      <section className="border-t section-sm" style={{ borderColor: "var(--line)", background: "var(--surface-2)" }}>
+        <div className="wrap flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2">
+            <h2 className="h2 !text-[clamp(1.4rem,1.1rem+1.2vw,1.85rem)]">
+              That was a lot. Fire away with whatever is left.
+            </h2>
+            <p className="body">
+              Or just let us know you'd like our help and we'll contact you.
+              Remember, you pay nothing.
+            </p>
+          </div>
+          <div className="flex-none">
+            <BasicButton
+              text="Request a call"
+              icon={<ArrowForwardIcon className="btn-arrow" sx={{ fontSize: 16 }} />}
+            />
+          </div>
         </div>
       </section>
     </>
