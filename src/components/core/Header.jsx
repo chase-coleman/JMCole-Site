@@ -1,143 +1,112 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import {BasicButton} from '../individual/Button';
-import { useNavigate } from 'react-router';
-import PhoneIcon from '@mui/icons-material/Phone';
+import CloseIcon from '@mui/icons-material/Close';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const pages = [{name: 'Home', url:'/'},{name: 'FAQs', url: 'medicare-faqs'},{name:'Turning 65', url: 'turning-65'},{name:'Medicare Options', url: 'medicare-options'},{name:'About Us', url: 'about'},{name: 'Contact', url: 'contact'}]
+const pages = [
+  { name: 'Home', url: '/' },
+  { name: 'FAQs', url: '/medicare-faqs' },
+  { name: 'Turning 65', url: '/turning-65' },
+  { name: 'Medicare Options', url: '/medicare-options' },
+  { name: 'About Us', url: '/about' },
+  { name: 'Contact', url: '/contact' },
+];
+
+const isCurrent = (pathname, url) =>
+  url === '/' ? pathname === '/' : pathname.startsWith(url);
 
 function NavBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [open, setOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // Solidify the bar once the page scrolls away from the top
+  useEffect(() => {
+    const onScroll = () => setStuck(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  const navigate = useNavigate()
-
-  const handleNavigate = (url) => {
-    navigate(url)
-    handleCloseNavMenu()
+  // Close the drawer whenever the route changes (covers browser back/forward).
+  // Derived during render rather than in an effect, per the React docs.
+  const [drawerPath, setDrawerPath] = useState(pathname);
+  if (drawerPath !== pathname) {
+    setDrawerPath(pathname);
+    setOpen(false);
   }
 
+  const handleNavigate = (url) => {
+    navigate(url);
+    setOpen(false);
+  };
 
   return (
-    <AppBar position="static" sx={{width: 'auto', backgroundColor: 'var(--blue)', mx: 5, my: 1.5, borderRadius: '7.5px'}}>
-      <Container maxWidth="xl" disableGutters sx={{paddingLeft: '15px', paddingRight: '15px'}}>
-        <Toolbar disableGutters >
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            onClick={() => handleNavigate("/")}
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'var(--crimson)',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'var(--text-white)',
-              textDecoration: 'none',
-              fontSize: '1rem',
-              lineHeight: 1.3
-            }}
-          >
-            JMCole <br /> Group
-          </Typography>
+    <header className={`nav ${stuck || open ? 'is-stuck' : ''}`}>
+      <div className="wrap nav-inner">
+        <button className="brand" onClick={() => handleNavigate('/')} aria-label="JMCole Group — home">
+          <span className="brand-mark" aria-hidden="true">JM</span>
+          <span className="brand-name">JMCole&nbsp;Group</span>
+        </button>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', color: 'var(--text-white)',  } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
+        <nav className="nav-links" aria-label="Primary">
+          {pages.map((page) => (
+            <button
+              key={page.name}
+              onClick={() => handleNavigate(page.url)}
+              className={`nav-link ${isCurrent(pathname, page.url) ? 'is-active' : ''}`}
+              aria-current={isCurrent(pathname, page.url) ? 'page' : undefined}
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' }, '& .MuiList-padding': {paddingTop: 0, paddingBottom: 0}, '& .MuiPaper-root': {borderRadius: '7.5px'}  }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.name} onClick={() => handleNavigate(page.url)} sx={{color: 'var(--text-white)', backgroundColor: 'var(--blue)'}}>
-                  <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+              {page.name}
+            </button>
+          ))}
+        </nav>
 
-          {/* Desktop */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',  }, justifyContent: 'center', gap: 1.5 }}>
+        <button
+          className="btn btn-primary hidden sm:inline-flex"
+          onClick={() => handleNavigate('/contact')}
+        >
+          Request a call
+          <ArrowForwardIcon className="btn-arrow" sx={{ fontSize: 16 }} />
+        </button>
+
+        <button
+          className="nav-toggle"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+        >
+          {open ? <CloseIcon fontSize="small" /> : <MenuIcon fontSize="small" />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="nav-drawer" id="mobile-nav">
+          <div className="wrap flex flex-col gap-1 py-3">
             {pages.map((page) => (
-              <Button
+              <button
                 key={page.name}
                 onClick={() => handleNavigate(page.url)}
-                className='btn-link'
-                sx={{ my: 2, color: 'var(--text-white)', display: 'block', lineHeight: 1 }}
+                className={`nav-drawer-link ${isCurrent(pathname, page.url) ? 'is-active' : ''}`}
               >
                 {page.name}
-              </Button>
+              </button>
             ))}
-          </Box>
-          <Box sx={{ flexGrow: 0,  }}>
-            {/* CONTACT BUTTON  */}
-            <BasicButton text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+            <button
+              className="btn btn-primary mt-2 sm:hidden"
+              onClick={() => handleNavigate('/contact')}
             >
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              Request a call
+              <ArrowForwardIcon className="btn-arrow" sx={{ fontSize: 16 }} />
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }
+
 export default NavBar;

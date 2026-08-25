@@ -8,8 +8,16 @@ import NotFound from "./components/pages/NotFound.jsx";
 import "../src/assets/fonts/fonts.css"
 
 const theme = createTheme({
+  palette: {
+    mode: "light",
+    background: { default: "#FFFFFF", paper: "#FFFFFF" },
+    primary: { main: "#04446C" },
+    secondary: { main: "#52691B" },
+    text: { primary: "#0A1E2D", secondary: "#46617A" },
+  },
   typography: {
-    fontFamily: "crimson",
+    fontFamily:
+      "-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif",
   },
 });
 

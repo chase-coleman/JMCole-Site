@@ -1,39 +1,55 @@
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 
 const textOptions = {
   success: {
-    title: "Your request has been submitted successfully.",
-    description: "One of our brokers will be calling you as soon as possible!"
+    title: "Request submitted",
+    description:
+      "One of our brokers will be calling you as soon as possible.",
   },
   failure: {
-    title: "There was an issue submitting your request.",
-    description: "Please try again, or give us a call directly at 541-554-8382!"
-  }
-}
+    title: "That didn't go through",
+    description:
+      "Please try again, or give us a call directly at 541-554-8382.",
+  },
+};
 
 const ModalBox = ({ status, setShowModal }) => {
+  const content = status ? textOptions.success : textOptions.failure;
+
   return (
-    <>
-      <div>
-        <Box className={!status ? "modal-error" : "modal-success"}>
-          <button
-              className="absolute top-2 right-2 hover:cursor-pointer"
-              onClick={() => setShowModal(false)}
-            >
-              <CloseIcon />
-            </button>
-            {/* Conditionally shows success or error messages */}
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {!status ? textOptions.failure.title : textOptions.success.title}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {!status ? textOptions.failure.description : textOptions.success.description}
-          </Typography>
-        </Box>
+    <Box className={`modal-box ${status ? "modal-success" : "modal-error"}`}>
+      <IconButton
+        aria-label="Close"
+        size="small"
+        onClick={() => setShowModal(false)}
+        sx={{ position: "absolute", top: 10, right: 10, color: "var(--text-faint)" }}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+
+      {/* Conditionally shows success or error messaging */}
+      <div className="modal-icon" aria-hidden="true">
+        {status ? <CheckIcon fontSize="small" /> : <PriorityHighIcon fontSize="small" />}
       </div>
-    </>
+
+      <h2 id="modal-modal-title" className="h3">
+        {content.title}
+      </h2>
+      <p id="modal-modal-description" className="body mt-2">
+        {content.description}
+      </p>
+
+      <button
+        className="btn btn-ghost mt-6 w-full"
+        onClick={() => setShowModal(false)}
+      >
+        Close
+      </button>
+    </Box>
   );
 };
 
