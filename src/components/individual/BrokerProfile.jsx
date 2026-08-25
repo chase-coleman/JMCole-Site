@@ -1,25 +1,50 @@
-import Divider from '@mui/material/Divider';
+const initials = (name) =>
+  name.split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase();
 
-const Broker = ({ broker }) => {
+const Broker = ({ broker, index = 0 }) => {
   return (
-    <div
-      className="body-text w-full md:w-11/12 lg:w-3/4 flow-root rounded-lg p-5 shadow-md sm:p-6"
-      style={{ backgroundColor: broker.background, color: 'var(--text-white)' }}
-    >
-      <img
-        src="/chase-main.webp"
-        alt={broker.name}
-        className="mx-auto mb-4 block w-72 max-w-full rounded-lg object-cover lg:float-left lg:mr-6 lg:h-72"
-      />
-      <h3 className="text-center !text-3xl font-semibold">{broker.name}</h3>
-      <p className="mt-1 mb-4 text-center opacity-90">{broker.position}</p>
-      <p className="text-center">{broker.bio}</p>
-      <Divider sx={{ my: 2.5, borderColor: 'rgb(242 242 242 / 45%)', clear: 'both' }} />
-      <div className="flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:gap-8">
-        <span className="break-words">Email: {broker.email}</span>
-        <span>Phone: {broker.phone}</span>
+    <article className="card card-hover card-lit grid gap-6 !p-6 sm:!p-8 md:grid-cols-[15rem_1fr]">
+      <div className="flex flex-col gap-4">
+        <img
+          src="/chase-main.webp"
+          alt={broker.name}
+          className="aspect-[4/5] w-full rounded-[var(--r)] object-cover"
+          style={{ border: "1px solid var(--line)" }}
+        />
       </div>
-    </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span
+              className="grid h-10 w-10 flex-none place-items-center rounded-[var(--r-sm)] font-bold"
+              style={{ background: "var(--grad)", color: "#FFFFFF", fontFamily: "var(--mono)", fontSize: ".72rem" }}
+              aria-hidden="true"
+            >
+              {initials(broker.name)}
+            </span>
+            <div>
+              <h3 className="h3">{broker.name}</h3>
+              <span className="tag tag-green mt-1.5 inline-block">{broker.position}</span>
+            </div>
+          </div>
+          <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
+        </div>
+
+        <p className="body measure">{broker.bio}</p>
+
+        <hr className="hairline" />
+
+        <div className="flex flex-wrap gap-x-8 gap-y-2">
+          <a href={`mailto:${broker.email}`} className="text-sm break-all" style={{ color: "var(--accent)" }}>
+            {broker.email}
+          </a>
+          <a href={`tel:${broker.phone}`} className="text-sm" style={{ color: "var(--accent)" }}>
+            {broker.phone}
+          </a>
+        </div>
+      </div>
+    </article>
   );
 };
 

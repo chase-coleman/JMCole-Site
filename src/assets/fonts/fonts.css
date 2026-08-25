@@ -1,8 +1,16 @@
 @font-face {
-  font-family: "crimson";
-  src: url("./CrimsonText-Regular.ttf") format("truetype");
-}
-@font-face {
   font-family: "martian";
   src: url("./MartianMono-Regular.ttf") format("truetype");
+  font-display: swap;
 }
+
+/* CrimsonText-Regular.ttf is still in this folder. The dark redesign runs on
+   sans + Martian Mono, so its @font-face is commented out to keep ~106 kB of
+   unused font out of the bundle. Re-enable it here to bring the serif back.
+
+@font-face {
+  font-family: "crimson";
+  src: url("./CrimsonText-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+*/

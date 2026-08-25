@@ -1,21 +1,30 @@
+import { useNavigate } from "react-router";
+
 const NotFound = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="page justify-center flex-1">
-      <div className="content flex flex-col items-center gap-4 text-center">
-        <span
-          className="header !text-[clamp(3.5rem,14vw,7rem)] leading-none"
-          style={{ color: "var(--blue)" }}
-          aria-hidden="true"
-        >
-          404
-        </span>
-        <h1 className="subheader">We couldn't find that page</h1>
-        <p className="body-text prose">
-          The page you're looking for may have moved or no longer exists. Use the
-          menu above to get back on track.
-        </p>
-      </div>
-    </div>
+    <section className="wrap flex flex-1 flex-col items-center justify-center gap-5 py-32 text-center">
+      <span className="eyebrow">Error</span>
+      <p
+        className="m-0 font-bold leading-none"
+        style={{
+          fontFamily: "var(--mono)",
+          fontSize: "clamp(4rem, 16vw, 9rem)",
+          letterSpacing: "-.04em",
+        }}
+      >
+        <span className="grad-text">404</span>
+      </p>
+      <h1 className="h2">We couldn't find that page.</h1>
+      <p className="lede measure">
+        The page may have moved, or it never existed. Head back and we'll get you
+        where you were going.
+      </p>
+      <button className="btn btn-primary btn-lg mt-2" onClick={() => navigate("/")}>
+        Back to home
+      </button>
+    </section>
   );
 };
 

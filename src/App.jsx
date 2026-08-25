@@ -4,14 +4,13 @@ import Footer from './components/core/Footer.jsx'
 import { Outlet } from "react-router";
 
 function App() {
-
   return (
-    <div className='flex flex-col w-full flex-1'>
-      <NavBar /> {/* Navbar */}
-      <main className='flex flex-col w-full flex-1'>
-        <Outlet /> {/* Renders whatever page the user is on*/}
+    <div className="flex min-h-svh flex-col">
+      <NavBar />
+      <main className="flex flex-1 flex-col">
+        <Outlet /> {/* Renders whatever page the user is on */}
       </main>
-      <Footer /> {/* Disclaimers*/}
+      <Footer />
     </div>
   )
 }

@@ -8,22 +8,23 @@ import ModalBox from "../individual/Modal";
 // Handles the input validation errors & rendering them
 function FormField({ id, label, error, children }) {
   return (
-    <div className="flex flex-col w-full gap-1">
-      <label htmlFor={id} className="field-label text-sm tracking-wide">
+    <div className="flex w-full flex-col">
+      <label htmlFor={id} className="field-label">
         {label}
       </label>
-      <div className="relative">
-        {children}
-        {error && (
-          <div className="absolute left-2 right-2 top-full mt-2 z-50 flex items-center gap-2 bg-white border border-gray-300 shadow-lg rounded px-3 py-2 text-sm text-gray-800">
-            <div className="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white" />
-            <div className="flex items-center justify-center w-6 h-6 bg-red-500 rounded text-white font-bold text-xs shrink-0">
-              !
-            </div>
-            <span className="font-semibold text-red-500">{error.message}</span>
-          </div>
-        )}
-      </div>
+      {children}
+      {error && (
+        <p className="field-msg" role="alert">
+          <span
+            className="grid h-4 w-4 flex-none place-items-center rounded-full text-[10px] font-bold"
+            style={{ background: "var(--danger)", color: "#FFFFFF" }}
+            aria-hidden="true"
+          >
+            !
+          </span>
+          {error.message}
+        </p>
+      )}
     </div>
   );
 }
@@ -32,6 +33,12 @@ function FormField({ id, label, error, children }) {
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+const promises = [
+  "A real broker calls you — not a call centre.",
+  "No cost, and no obligation to enrol in anything.",
+  "We compare the carriers available where you live.",
+];
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -84,93 +91,133 @@ const Contact = () => {
 
   return (
     <>
-      <div className="page">
-        <div className="content flex flex-col items-center gap-4">
-          <h1 className="header">Get in touch</h1>
-          <p className="body-text prose text-center">
-            We'd love to help you! If you'd like our guidance, please fill out
-            the form below:
+      <section className="wrap pt-16 pb-8 sm:pt-20">
+        <div className="flex flex-col gap-5">
+          <span className="eyebrow">Contact</span>
+          <h1 className="display !text-[clamp(2.25rem,1.4rem+3.4vw,3.75rem)]">
+            Get in <span className="grad-text">touch</span>.
+          </h1>
+          <p className="lede measure">
+            We'd love to help. Fill this out and one of our brokers will reach
+            out — it costs you nothing.
           </p>
         </div>
-        <Modal
-          className="relative"
-          open={showModal}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          {err ? (
-            <ModalBox
-              status={false}
-              setShowModal={setShowModal}
-            />
-          ) : (
-            <ModalBox
-              status={true}
-              setShowModal={setShowModal}
-            />
-          )}
-        </Modal>
-        <div className="content flex min-h-[32rem] flex-col items-center justify-center">
-          {submitting ? (
-            <Oval
-              visible={true}
-              height="80"
-              width="80"
-              color="var(--blue)"
-              secondaryColor="var(--blue-alt)"
-              ariaLabel="oval-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          ) : (
-            <div className="body-text w-full sm:w-2/3 md:w-[550px] rounded-xl shadow-lg bg-[#05567a]">
+      </section>
+
+      <Modal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        {err ? (
+          <ModalBox status={false} setShowModal={setShowModal} />
+        ) : (
+          <ModalBox status={true} setShowModal={setShowModal} />
+        )}
+      </Modal>
+
+      <section className="wrap pb-24">
+        <div className="split">
+          {/* ── Side panel ── */}
+          <aside className="split-pane split-pane-alt flex flex-col gap-8">
+            <div className="flex flex-col gap-4">
+              <span className="mono" style={{ color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: ".14em" }}>
+                What happens next
+              </span>
+              <ul className="flex flex-col gap-4">
+                {promises.map((line) => (
+                  <li key={line} className="flex items-start gap-3">
+                    <span
+                      className="mt-1 grid h-4 w-4 flex-none place-items-center rounded-full"
+                      style={{ background: "var(--green-soft)", border: "1px solid var(--green-line)" }}
+                      aria-hidden="true"
+                    >
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="m5 13 4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span className="body !text-sm">{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <hr className="hairline" />
+
+            <div className="flex flex-col gap-3">
+              <span className="mono" style={{ color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: ".14em" }}>
+                Prefer to call
+              </span>
+              <a className="h3" style={{ color: "var(--accent)" }} href="tel:541-554-8382">
+                541-554-8382
+              </a>
+              <p className="body !text-sm">
+                1011 Valley River Way, Suite #116A
+                <br />
+                Eugene, OR 97401
+              </p>
+            </div>
+          </aside>
+
+          {/* ── Form ── */}
+          <div className="split-pane">
+            {submitting ? (
+              <div className="flex min-h-[26rem] flex-col items-center justify-center gap-4">
+                <Oval
+                  visible={true}
+                  height="56"
+                  width="56"
+                  color="var(--accent)"
+                  secondaryColor="var(--surface-3)"
+                  ariaLabel="oval-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+                <p className="mono" style={{ color: "var(--text-faint)" }}>
+                  Sending your request…
+                </p>
+              </div>
+            ) : (
               <form
                 id="inputForm"
                 onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col items-center gap-6 md:gap-8 p-6 sm:p-8 text-black"
+                className="flex min-h-[26rem] flex-col gap-5"
               >
                 {/* First & Last Name Row */}
-                <div className="flex flex-col md:flex-row md:items-start gap-6 w-full">
-                  <FormField
-                    id="firstName"
-                    label="First Name"
-                    error={errors.firstName}
-                  >
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <FormField id="firstName" label="First name" error={errors.firstName}>
                     <input
                       id="firstName"
+                      autoComplete="given-name"
                       {...register("firstName", {
                         required: "First name is required",
                         maxLength: { value: 100, message: "Max 100 characters" },
                       })}
-                      className="bg-white h-10 w-full px-2 !text-base rounded"
+                      className={`input ${errors.firstName ? "input-error" : ""}`}
                     />
                   </FormField>
 
-                  <FormField
-                    id="lastName"
-                    label="Last Name"
-                    error={errors.lastName}
-                  >
+                  <FormField id="lastName" label="Last name" error={errors.lastName}>
                     <input
                       id="lastName"
+                      autoComplete="family-name"
                       {...register("lastName", {
                         required: "Last name is required",
                         maxLength: { value: 100, message: "Max 100 characters" },
                       })}
-                      className="bg-white h-10 w-full px-2 !text-base rounded"
+                      className={`input ${errors.lastName ? "input-error" : ""}`}
                     />
                   </FormField>
                 </div>
 
                 {/* Email */}
-                <FormField
-                  id="emailInput"
-                  label="Email"
-                  error={errors.emailInput}
-                >
+                <FormField id="emailInput" label="Email" error={errors.emailInput}>
                   <input
                     id="emailInput"
                     type="email"
+                    autoComplete="email"
+                    placeholder="you@example.com"
                     {...register("emailInput", {
                       required: "Email is required",
                       pattern: {
@@ -178,19 +225,17 @@ const Contact = () => {
                         message: "Enter a valid email address",
                       },
                     })}
-                    className="bg-white h-10 w-full px-2 !text-base rounded"
+                    className={`input ${errors.emailInput ? "input-error" : ""}`}
                   />
                 </FormField>
 
                 {/* Phone Number */}
-                <FormField
-                  id="phoneNumber"
-                  label="Phone Number"
-                  error={errors.phone}
-                >
+                <FormField id="phoneNumber" label="Phone number" error={errors.phoneNumber}>
                   <input
                     id="phoneNumber"
                     type="tel"
+                    autoComplete="tel"
+                    placeholder="5415548382"
                     {...register("phoneNumber", {
                       required: "Phone number is required",
                       validate: (value) => {
@@ -214,36 +259,30 @@ const Contact = () => {
                     })}
                     maxLength={10}
                     inputMode="numeric"
-                    className="bg-white h-10 w-full px-2 !text-base rounded"
+                    className={`input ${errors.phoneNumber ? "input-error" : ""}`}
                   />
                 </FormField>
 
                 {/* Message */}
-                <FormField
-                  id="messageInput"
-                  label="Message"
-                  error={errors.example}
-                >
+                <FormField id="messageInput" label="Message (optional)" error={errors.message}>
                   <textarea
                     id="messageInput"
+                    rows={4}
                     maxLength={500}
+                    placeholder="Tell us where you are in the process…"
                     {...register("message", { required: false })}
-                    className="bg-white h-25 resize-none overflow-y-auto w-full p-2 !text-base rounded"
+                    className="input resize-none"
                   />
                 </FormField>
 
-                <button
-                  type="submit"
-                  className="btn-default w-40 rounded py-2 !text-lg text-white"
-                  style={{ backgroundColor: "var(--green)" }}
-                >
-                  Submit
+                <button type="submit" className="btn btn-primary btn-lg mt-auto self-start">
+                  Send request
                 </button>
               </form>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
