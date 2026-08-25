@@ -5,7 +5,7 @@ const DrugPlan = () => {
         Prescription Drug Plans (PDP) cover the cost of medications & are
         generally used in one of two scenarios:
       </span>
-      <ul className="flex flex-col gap-1 list-disc">
+      <ul className="flex flex-col gap-1 list-disc pl-5">
         <li>
           a person has ONLY original Medicare (Part A+B) and needs to have a PDP
         </li>
@@ -17,7 +17,7 @@ const DrugPlan = () => {
       <span className="font-semibold">
         Most PDP's are very similar though there are some differences of note:
       </span>
-      <ul className="flex flex-col gap-1 list-disc">
+      <ul className="flex flex-col gap-1 list-disc pl-5">
         <li>
           The cost of a PDP varies greatly depending on a variety of factors
         </li>

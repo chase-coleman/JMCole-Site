@@ -17,10 +17,15 @@ const imgs = [
   { src: "/Wellcare-logo.webp", alt: "Wellcare", href: "https://www.wellcare.com/en/medicare"},
 ];
 
+// Shared classes for the two carousel arrows so they stay identical
+const arrowButton =
+  "absolute top-0 z-30 flex items-center justify-center h-full px-2 sm:px-4 cursor-pointer group focus:outline-none";
+const arrowGlyph =
+  "inline-flex items-center justify-center w-10 h-10 rounded-full border-2 border-transparent transition-colors hover:border-[color:var(--green)]";
 
 const Home = () => {
   const computerScreen = useMediaQuery({
-    // used to display the icon only on larger screens, not on smaller phone screens.
+    // used to display the image beside the copy only on larger screens
     query: "(min-width:1200px)",
   });
 
@@ -29,68 +34,54 @@ const Home = () => {
   }
 
   return (
-    <>
-      <div className="flex flex-col items-center ml-9 mr-9 mt-5 gap-5">
-        <div>
-          <h1 className="header">Medicare can be confusing —</h1>
-        </div>
-        <div>
-          <h2 className="subheader">but it doesn't have to be.</h2>
-        </div>
-        <div className="flex text-center">
-          <span className="body-text">
-            JMCole Group has been proudly serving Oregon seniors since 2016.
-          </span>
-          {/* <span className="body-text">
-            Proudly serving Oregon seniors since 2016.
-          </span> */}
-        </div>
-        <div className="p-2 w-screen lg:w-full sm:mt-2">
-          <img
-            src="/multnomah.webp"
-            alt="multnomah"
-            className="mx-auto w-full"
-          />
-        </div>
-        <div className="flex gap-10">
+    <div className="page">
+      {/* HERO */}
+      <div className="content flex flex-col items-center gap-4">
+        <h1 className="header">Medicare can be confusing —</h1>
+        <h2 className="subheader">but it doesn't have to be.</h2>
+        <p className="body-text prose text-center">
+          JMCole Group has been proudly serving Oregon seniors since 2016.
+        </p>
+        <img
+          src="/multnomah.webp"
+          alt="multnomah"
+          className="mt-2 w-full rounded-lg object-cover"
+        />
+        <div className="mt-2 flex flex-wrap justify-center gap-4 sm:gap-8">
           <BasicButton
             text="Request Guidance now"
             icon={<ArrowRightAltIcon />}
           />
           <OutlinedButton text="Meet The Team" icon={<ArrowRightAltIcon />} />
         </div>
+      </div>
+
+      {/* "LET US HELP YOU" BAND */}
+      <section className="band" style={{ backgroundColor: "var(--blue)" }}>
         <div
-          className="flex items-center w-screen mt-4 p-8 min-h-125"
-          style={{ backgroundColor: "var(--blue)"}}
+          className="content flex items-center gap-8"
+          style={{ color: "var(--text-white)" }}
         >
+          {/* Renders the image to the left on larger screens */}
           {computerScreen && (
-            <>
-              <div className="w-2/3">
-                <img src="/options.webp" alt="options" />
-              </div>
-            </>
-          )}{" "}
-          {/* Renders the image to the left on larger screens*/}
-          <div
-            className="flex flex-col justify-center items-center w-full gap-10"
-            style={{ color: "var(--text-white)" }}
-          >
-            <h1
-              className="subheader sm:!text-2xl"
-              style={{ color: "var(--text-white)" }}
-            >
+            <div className="w-2/3">
+              <img src="/options.webp" alt="options" className="w-full" />
+            </div>
+          )}
+          <div className="flex w-full flex-col items-center justify-center gap-8">
+            <h2 className="subheader" style={{ color: "var(--text-white)" }}>
               Let us help you - for free!
-            </h1>
+            </h2>
+            {/* Renders the image in the middle on smaller screens */}
             {!computerScreen && (
-              <>
-                <div className="flex justify-center w-full">
-                  <img src="/options.webp" alt="options" className="w-9/10" />
-                </div>
-              </>
-            )}{" "}
-            {/* Renders the image in the middle on smaller screens*/}
+              <img
+                src="/options.webp"
+                alt="options"
+                className="w-9/10 max-w-lg"
+              />
+            )}
             <ul
-              className="body-text list-disc flex flex-col gap-3"
+              className="body-text flex list-disc flex-col gap-3 pl-5"
               style={{ color: "var(--text-white)" }}
             >
               <li>Should I go with a Medigap or an Advantage plan?</li>
@@ -98,91 +89,86 @@ const Home = () => {
               <li>What about all the stuff they say on TV?</li>
               <li>How much do I have to pay?</li>
             </ul>
-            <h3
-              className="body-text text-start underline"
+            <p
+              className="body-text underline"
               style={{
                 color: "var(--text-white)",
                 fontFamily: "var(--martian)",
               }}
             >
               That's where we come in.
-            </h3>
+            </p>
           </div>
         </div>
+      </section>
+
+      {/* REVIEWS CAROUSEL */}
+      <div className="content">
         <div
           id="controls-carousel"
-          className="relative w-screen sm:w-full"
+          className="relative w-full"
           data-carousel="static"
         >
           {/* <!-- Carousel wrapper --> */}
           <div
-            className="relative h-90 overflow-hidden rounded-base"
+            className="relative h-[26rem] sm:h-90 overflow-hidden rounded-lg"
             data-carousel="static"
           >
             {reviews.map((review, idx) => (
               <div
                 key={idx}
-                className="hidden duration-2000 ease-in-out flex flex-col h-full items-center justify-center"
+                className="hidden duration-2000 ease-in-out flex flex-col h-full items-center justify-center gap-2 px-12 sm:px-16"
                 data-carousel-item
               >
-                <span
-                  className="body-text w-2/3 p-3 italic font-md md:font-xl"
-                  style={{ lineHeight: 1.3 }}
-                >
+                <p className="body-text max-w-[60ch] text-center italic">
                   "{review.text}"
-                </span>
-                <span
-                  className="body-text w-2/3 p-3 font-md md:font-xl"
-                  style={{ lineHeight: 1.3 }}
-                >
-                  -{review.name}
-                </span>
+                </p>
+                <p className="body-text text-center font-semibold">
+                  — {review.name}
+                </p>
               </div>
             ))}
           </div>
           {/* <!-- Slider controls --> */}
           <button
             type="button"
-            className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            className={`${arrowButton} start-0`}
             data-carousel-prev
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-base hover:border-2 hover:border-[color:var(--green)]">
+            <span className={arrowGlyph}>
               <svg
-                className="w-12 h-12 text-white rtl:rotate-180"
+                className="w-8 h-8 rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                fill="var(--green)"
+                fill="none"
+                stroke="var(--green)"
                 viewBox="0 0 24 24"
               >
                 <path
-                  stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="m15 19-7-7 7-7"
                 />
               </svg>
+              <span className="sr-only">Previous</span>
             </span>
           </button>
           <button
             type="button"
-            className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+            className={`${arrowButton} end-0`}
             data-carousel-next
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-base hover:border-2 hover:border-[color:var(--green)]">
+            <span className={arrowGlyph}>
               <svg
-                className="w-10 h-10 text-white rtl:rotate-180"
+                className="w-8 h-8 rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                fill="var(--green)"
+                fill="none"
+                stroke="var(--green)"
                 viewBox="0 0 24 24"
               >
                 <path
-                  stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
@@ -193,35 +179,55 @@ const Home = () => {
             </span>
           </button>
         </div>
-        <div
-          className="h-40 w-screen overflow-hidden" 
-        >
-          <Marquee speed={50} pauseOnHover>
-            {imgs.map(img => (
-              <img key={img.alt} className ="h-15 w-auto ml-6 mr-6 hover:cursor-pointer" src={img.src} alt={img.alt} onClick={() => handleNav(img.href)}/>
-            ))}
-          </Marquee>
-        </div>
-        <div className="flex flex-col justify-center gap-2 w-screen p-3 pt-5 min-h-125" style={{backgroundColor: 'var(--green)'}}>
-          <h2 className="header mb-8" style={{color: 'var(--text-white)'}}>Meet The Team</h2>
-          <div className="body-text flex flex-wrap justify-center gap-10 sm:gap-15" style={{color: 'var(--text-white)'}}>
-          {brokers.map(broker => (
-            <div key={broker.name} className="flex flex-col items-center gap-2">
-              <div className="bg-white w-24 h-36" style={{borderRadius: '75px'}}></div>
-              <span >{broker.name}</span>
-              <a className="underline  uppercase text-blue-500" href={broker.phone} style={{fontSize: '18px', color: 'var(--text-white)'}}>{broker.phone}</a>
-            </div>
+      </div>
+
+      {/* CARRIER LOGOS */}
+      <div className="w-full overflow-hidden py-4">
+        <Marquee speed={50} pauseOnHover>
+          {imgs.map(img => (
+            <img
+              key={img.alt}
+              className="h-15 w-auto mx-8 object-contain hover:cursor-pointer"
+              src={img.src}
+              alt={img.alt}
+              onClick={() => handleNav(img.href)}
+            />
           ))}
+        </Marquee>
+      </div>
+
+      {/* TEAM BAND */}
+      <section className="band" style={{ backgroundColor: 'var(--green)' }}>
+        <div className="content" style={{ color: 'var(--text-white)' }}>
+          <h2 className="header mb-10" style={{ color: 'var(--text-white)' }}>
+            Meet The Team
+          </h2>
+          <div className="body-text flex flex-wrap justify-center gap-10 sm:gap-15">
+            {brokers.map(broker => (
+              <div key={broker.name} className="flex w-36 flex-col items-center gap-2 text-center">
+                <div className="h-36 w-28 rounded-2xl bg-white/95 shadow-md" />
+                <span className="font-semibold">{broker.name}</span>
+                <a
+                  className="underline"
+                  href={broker.phone}
+                  style={{ color: 'var(--text-white)' }}
+                >
+                  {broker.phone}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="flex flex-col items-center w-full p-8">
-          <h1 className="subheader">A Part of the Medicare Plans Resource Center</h1>
-          <img src="/mprc-logo.webp" alt="mprc" className="w-full sm:w-1/2"/>
-          <span className="body-text">1011 Valley River Way, Suite #116A</span>
-          <span className="body-text">Eugene, OR, 97401</span>
-        </div>
+      </section>
+
+      {/* MPRC */}
+      <div className="content flex flex-col items-center gap-3 text-center">
+        <h2 className="subheader">A Part of the Medicare Plans Resource Center</h2>
+        <img src="/mprc-logo.webp" alt="mprc" className="w-full sm:w-1/2" />
+        <p className="body-text">1011 Valley River Way, Suite #116A</p>
+        <p className="body-text">Eugene, OR, 97401</p>
       </div>
-    </>
+    </div>
   );
 };
 

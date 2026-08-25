@@ -27,7 +27,7 @@ const AdvantagePlan = () => {
           <span className="font-semibold">Extra Benefits:</span> Many Advantage
           plans offer benefits that Medicare and Medigap don't cover, including:
         </p>
-        <ul className="list-disc flex flex-col gap-1 mt-2">
+        <ul className="list-disc flex flex-col gap-1 mt-2 pl-5">
           <li>Preventitive & comprehensive dental</li>
           <li>Hearing aids and hearing services</li>
           <li>Eyeglasses and contacts</li>

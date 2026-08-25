@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
 const textOptions = {
@@ -14,26 +15,30 @@ const textOptions = {
 }
 
 const ModalBox = ({ status, setShowModal }) => {
+  const content = status ? textOptions.success : textOptions.failure;
+
   return (
-    <>
-      <div>
-        <Box className={!status ? "modal-error" : "modal-success"}>
-          <button
-              className="absolute top-2 right-2 hover:cursor-pointer"
-              onClick={() => setShowModal(false)}
-            >
-              <CloseIcon />
-            </button>
-            {/* Conditionally shows success or error messages */}
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {!status ? textOptions.failure.title : textOptions.success.title}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {!status ? textOptions.failure.description : textOptions.success.description}
-          </Typography>
-        </Box>
-      </div>
-    </>
+    <Box className={`modal-box ${status ? "modal-success" : "modal-error"}`}>
+      <IconButton
+        aria-label="Close"
+        size="small"
+        onClick={() => setShowModal(false)}
+        sx={{ position: "absolute", top: 8, right: 8, color: "var(--text-white)" }}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+      {/* Conditionally shows success or error messages */}
+      <Typography
+        id="modal-modal-title"
+        component="h2"
+        sx={{ pr: 4, fontSize: "1.15rem", fontWeight: 700, lineHeight: 1.35 }}
+      >
+        {content.title}
+      </Typography>
+      <Typography id="modal-modal-description" sx={{ mt: 1.5, lineHeight: 1.5 }}>
+        {content.description}
+      </Typography>
+    </Box>
   );
 };
 

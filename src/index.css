@@ -15,13 +15,20 @@
   --mono: ui-monospace, Consolas, monospace;
   --crimson: "crimson";
   --martian: "martian";
-  --syne: "syne";
 
-
+  /* Shared shape/rhythm tokens so panels, cards and inputs match each other */
+  --radius: 7.5px;
+  --radius-lg: 14px;
+  --page-max: 1200px;
+  --prose-max: 70ch;
+  --gutter: clamp(1rem, 4vw, 2.25rem);
+  --section-gap: clamp(1.75rem, 4vw, 2.75rem);
+  --band-pad: clamp(2rem, 5vw, 3.5rem);
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  /* The palette is light-only, so opt out of dark-mode native controls */
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
 }
@@ -29,7 +36,8 @@
 
 body {
   margin: 0;
-  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -40,49 +48,74 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  /* Guards against stray full-width children scrolling the page sideways */
+  overflow-x: clip;
+}
+
+/* LAYOUT PRIMITIVES */
+
+/* Every page is a full-width column; colour bands stretch edge to edge
+   while `.container` keeps the reading content centred and capped. */
+.page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--section-gap);
+  padding-block: clamp(1.25rem, 3vw, 2rem) clamp(2rem, 5vw, 3.5rem);
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  box-sizing: border-box;
+}
+
+.band {
+  width: 100%;
+  padding-block: var(--band-pad);
+}
+
+.prose {
+  max-width: var(--prose-max);
+  margin-inline: auto;
 }
 
 /* GLOBAL APP DEFAULTS */
 
-.text-white{
-  font-family: var(--crimson);
-  color: var(--text-white);
-}
-
-
 .header {
   font-family: var(--martian);
-  font-size: 2.25em;
+  font-size: clamp(1.5rem, 1.05rem + 2.2vw, 2.5rem);
   font-weight: bold;
-  letter-spacing: .15em;
-  line-height: 1.25em; 
+  letter-spacing: .12em;
+  line-height: 1.3;
   text-align: center;
+  text-wrap: balance;
 }
 
 .subheader {
   font-family: var(--martian);
-  font-size: 1.75em;
+  font-size: clamp(1.15rem, 0.92rem + 1.15vw, 1.75rem);
   font-weight: bold;
-  letter-spacing: .15em;
-  line-height: 1.25em; 
+  letter-spacing: .1em;
+  line-height: 1.35;
   text-align: center;
+  text-wrap: balance;
 }
 
 .body-text {
   font-family: var(--crimson);
   color: var(--text);
-  font-size: 1.3em;
+  font-size: clamp(1.05rem, 0.99rem + 0.3vw, 1.3rem);
+  line-height: 1.6;
 }
 
-
-@media screen and (max-width: 768px){
-  .header {
-    font-size: 1.5em;
-  }
-  .subheader {
-    font-size: 1em;
-  }
-  .body-text {
-    font-size: 1em;
-  }
+/* Visible keyboard focus, matched to the brand accent */
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 4px;
 }

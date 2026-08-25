@@ -43,8 +43,18 @@ function NavBar() {
 
 
   return (
-    <AppBar position="static" sx={{width: 'auto', backgroundColor: 'var(--blue)', mx: 5, my: 1.5, borderRadius: '7.5px'}}>
-      <Container maxWidth="xl" disableGutters sx={{paddingLeft: '15px', paddingRight: '15px'}}>
+    <AppBar
+      position="static"
+      sx={{
+        width: 'auto',
+        backgroundColor: 'var(--blue)',
+        mx: { xs: 1.5, sm: 3, md: 5 },
+        my: 1.5,
+        borderRadius: 'var(--radius)',
+        boxShadow: '0 6px 20px rgb(4 68 108 / 18%)',
+      }}
+    >
+      <Container maxWidth="xl" disableGutters sx={{ px: { xs: 1.5, sm: 2 } }}>
         <Toolbar disableGutters >
           <Typography
             variant="h6"
@@ -60,13 +70,15 @@ function NavBar() {
               color: 'var(--text-white)',
               textDecoration: 'none',
               fontSize: '1rem',
-              lineHeight: 1.3
+              lineHeight: 1.3,
+              cursor: 'pointer',
+              flexShrink: 0,
             }}
           >
             JMCole <br /> Group
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', color: 'var(--text-white)',  } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, color: 'var(--text-white)' }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -91,10 +103,27 @@ function NavBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' }, '& .MuiList-padding': {paddingTop: 0, paddingBottom: 0}, '& .MuiPaper-root': {borderRadius: '7.5px'}  }}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                '& .MuiList-padding': { paddingTop: 0, paddingBottom: 0 },
+                '& .MuiPaper-root': {
+                  borderRadius: 'var(--radius)',
+                  backgroundColor: 'var(--blue)',
+                  overflow: 'hidden',
+                },
+              }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.name} onClick={() => handleNavigate(page.url)} sx={{color: 'var(--text-white)', backgroundColor: 'var(--blue)'}}>
+                <MenuItem
+                  key={page.name}
+                  onClick={() => handleNavigate(page.url)}
+                  sx={{
+                    color: 'var(--text-white)',
+                    backgroundColor: 'var(--blue)',
+                    py: 1.25,
+                    '&:hover': { backgroundColor: 'var(--blue-alt)' },
+                  }}
+                >
                   <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                 </MenuItem>
               ))}
@@ -102,19 +131,27 @@ function NavBar() {
           </Box>
 
           {/* Desktop */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',  }, justifyContent: 'center', gap: 1.5 }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexWrap: 'wrap', justifyContent: 'center', gap: { md: 0.5, lg: 1.5 } }}>
             {pages.map((page) => (
               <Button
                 key={page.name}
                 onClick={() => handleNavigate(page.url)}
                 className='btn-link'
-                sx={{ my: 2, color: 'var(--text-white)', display: 'block', lineHeight: 1 }}
+                sx={{
+                  my: 2,
+                  px: 1.25,
+                  color: 'var(--text-white)',
+                  display: 'block',
+                  lineHeight: 1,
+                  whiteSpace: 'nowrap',
+                  fontSize: { md: '0.8rem', lg: '0.875rem' },
+                }}
               >
                 {page.name}
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0,  }}>
+          <Box sx={{ flexGrow: 0, flexShrink: 0 }}>
             {/* CONTACT BUTTON  */}
             <BasicButton text="Request A Call" icon={<PhoneIcon fontSize='small'/>} />
             <Menu
