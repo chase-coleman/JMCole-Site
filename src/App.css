@@ -139,6 +139,27 @@
 
 @media (min-width: 940px) { .nav-toggle { display: none; } }
 
+/* The "Request a call" CTA is hidden under 650px, where the header runs out of
+   room. Between 650px and 940px it sits alongside the hamburger, so the copy
+   inside the drawer steps aside to avoid showing the CTA twice.
+   Both are compounded with .btn to outrank `.btn { display: inline-flex }`
+   below, which would otherwise win on source order. */
+.btn.nav-cta { display: none; }
+
+@media (min-width: 650px) {
+  .btn.nav-cta { display: inline-flex; }
+  .btn.nav-drawer-cta { display: none; }
+}
+
+/* While the CTA and the hamburger share the bar, the free space belongs
+   between the brand and the CTA -- otherwise .nav-toggle's `margin-left: auto`
+   strands the CTA next to the brand and opens a gap across the whole header.
+   Above 940px the hamburger is gone and .nav-links handles the spacing. */
+@media (min-width: 650px) and (max-width: 939.98px) {
+  .btn.nav-cta { margin-left: auto; }
+  .nav-toggle { margin-left: 0; }
+}
+
 .nav-drawer {
   border-top: 1px solid var(--line);
   background: rgb(255 255 255 / 96%);

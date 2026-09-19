@@ -8,7 +8,7 @@ const Broker = ({ broker }) => {
         <img
           src={broker.img}
           alt={broker.name}
-          className="h-3/4 w-full rounded-[var(--r)] object-cover"
+          className="aspect-square w-full rounded-[var(--r)] object-cover object-top md:aspect-auto md:h-3/4"
           style={{ border: "1px solid var(--line)" }}
         />
         <p className="mono !text-[.5rem]">NPN: {broker.npn}</p>
