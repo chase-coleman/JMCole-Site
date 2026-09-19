@@ -47,8 +47,11 @@ function NavBar() {
     <header className={`nav ${stuck || open ? 'is-stuck' : ''}`}>
       <div className="wrap nav-inner">
         <button className="brand" onClick={() => handleNavigate('/')} aria-label="JMCole Group, home">
-          <span className="brand-mark" aria-hidden="true">JM</span>
-          <span className="brand-name">JMCole&nbsp;Group</span>
+          <img src="./jmcole-logo-only.webp" alt="JM" className='w-12' />
+          <span className="brand-text">
+            <span className="brand-name">JMCole&nbsp;Group</span>
+            <span className="brand-tagline">Part of the Medicare Plans Resource Center</span>
+          </span>
         </button>
 
         <nav className="nav-links" aria-label="Primary">

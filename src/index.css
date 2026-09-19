@@ -36,6 +36,10 @@
 
   --grad-line:    linear-gradient(90deg, transparent, var(--line-strong), transparent);
 
+  /* Alternating card tints for the broker profiles */
+  --blue:         #F4F7FA;
+  --blue-alt:     #EAF0F6;
+
   /* ── Type ─────────────────────────────────────────────────────────────── */
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
   /* Martian Mono ships with the project and carries the "engineering" register */
@@ -192,6 +196,29 @@ body::before {
 }
 
 .measure { max-width: 62ch; }
+
+/* ── Broker profile ────────────────────────────────────────────────────── */
+
+/* Each card paints its own background from broker.background, so the text is
+   set in the page background colour to read against it. The descendants are
+   listed out because .h3, .body and the links all declare their own colour. */
+.broker-card,
+.broker-card .h3,
+.broker-card .body,
+.broker-card .broker-position,
+.broker-card a {
+  color: var(--bg);
+}
+
+/* Drawn in currentColor so the rules track whatever colour the card's text is. */
+.broker-divider {
+  height: 1px;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  background: currentColor;
+  opacity: .22;
+}
 
 /* ── Focus ─────────────────────────────────────────────────────────────── */
 
