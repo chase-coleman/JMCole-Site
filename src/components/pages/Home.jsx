@@ -2,44 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Marquee from "react-fast-marquee";
-import { reviews } from "../../assets/reviews";
-import { brokers } from "../../assets/brokers";
-import { BasicButton, OutlinedButton } from "../individual/Button";
+import { BasicButton } from "../individual/Button";
+import { carriers, questions, brokers, reviews } from "../../data/constants";
 
-const carriers = [
-  { src: "/Aflac-logo.webp", alt: "Aflac", href: "https://www.aflacmedicaresupplement.com/" },
-  { src: "/Atrio-logo.webp", alt: "Atrio", href: "https://www.atriohp.com/" },
-  { src: "/Devoted-logo.webp", alt: "Devoted", href: "https://www.devoted.com/" },
-  { src: "/Humana-logo.webp", alt: "Humana", href: "https://www.humana.com/" },
-  { src: "/Providence-logo.webp", alt: "Providence", href: "https://www.providencehealthplan.com/medicare/medicare-advantage-plans" },
-  { src: "/PS-logo.webp", alt: "Pacific Source", href: "https://medicare.pacificsource.com/" },
-  { src: "/Regence-logo.webp", alt: "Regence", href: "https://www.regence.com/medicare/plans" },
-  { src: "/UHC-logo.webp", alt: "UHC", href: "https://www.uhc.com/medicare" },
-  { src: "/Wellcare-logo.webp", alt: "Wellcare", href: "https://www.wellcare.com/en/medicare" },
-];
-
-const questions = [
-  {
-    q: "Should I go with a Medigap or an Advantage plan?",
-    a: "They work very differently, and the cheaper one is not always the better one. We go through both with you.",
-    to: "/medicare-options",
-  },
-  {
-    q: "What plans should I choose?",
-    a: "It depends on your doctors, your prescriptions and your county. No one plan is best for everybody.",
-    to: "/medicare-options",
-  },
-  {
-    q: "What about all the stuff they say on TV?",
-    a: "A lot of those ads are national. The plan being advertised may not even be sold where you live.",
-    to: "/medicare-faqs",
-  },
-  {
-    q: "How much do I have to pay?",
-    a: "Medicare is not free, and each part is priced differently. We will go through the actual numbers with you.",
-    to: "/medicare-faqs",
-  },
-];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -116,7 +81,7 @@ const Home = () => {
         </p>
         <div className="marquee-mask">
           <Marquee speed={38} pauseOnHover autoFill>
-            {carriers.map((carrier) => (
+            {carriers?.map((carrier) => (
               <img
                 key={carrier.alt}
                 className="carrier-logo"
@@ -146,7 +111,7 @@ const Home = () => {
           </div>
 
           <div>
-            {questions.map((item) => (
+            {questions?.map((item) => (
               <button
                 key={item.q}
                 onClick={() => navigate(item.to)}
@@ -193,7 +158,7 @@ const Home = () => {
             </div>
 
             <div className="relative h-[17rem] overflow-hidden sm:h-[13rem]">
-              {reviews.map((review, idx) => (
+              {reviews?.map((review, idx) => (
                 /* The first slide starts visible so the panel is never blank if
                    flowbite hasn't initialised yet. */
                 <div key={idx} className={`${idx === 0 ? "" : "hidden"} h-full`} data-carousel-item>
@@ -227,7 +192,7 @@ const Home = () => {
           </div>
 
           <ul className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
-            {brokers.map((broker) => (
+            {brokers?.map((broker) => (
               <li key={broker.name} className="flex flex-col gap-1">
                 <img
                   src={broker.img}

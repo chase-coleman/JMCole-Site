@@ -1,11 +1,6 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { BasicButton } from "../individual/Button";
-
-const window7 = [
-  { tag: "3 months before", body: "Your enrollment window opens three months ahead of your birth month." },
-  { tag: "Your birth month", body: "The middle of the window. Coverage generally starts on the 1st.", key: true },
-  { tag: "3 months after", body: "The window closes. Miss it and a Late Enrollment Penalty can follow you." },
-];
+import { enrollmentWindows } from "../../data/constants";
 
 const T65 = () => {
   return (
@@ -17,7 +12,7 @@ const T65 = () => {
               Turning 65 and not sure what to do?
             </h1>
             <p className="lede measure">
-              Medicare requires you to enroll in Part B within a 7-month window:
+              Medicare requires you to enroll in Part B within a 7-month enrollmentWindows:
               3 months before your birth month, your birth month itself, and 3
               months after.
             </p>
@@ -33,7 +28,7 @@ const T65 = () => {
 
       <section className="wrap pb-16">
         <div className="timeline">
-          {window7.map((step) => (
+          {enrollmentWindows?.map((step) => (
             <div key={step.tag} className={`timeline-step ${step.key ? "is-key" : ""}`}>
               <span className="eyebrow">{step.tag}</span>
               <p className="body !text-sm">{step.body}</p>

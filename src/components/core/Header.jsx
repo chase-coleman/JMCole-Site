@@ -3,17 +3,7 @@ import { useLocation, useNavigate } from 'react-router';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
-const pages = [
-  { name: 'Home', url: '/' },
-  { name: 'FAQs', url: '/medicare-faqs' },
-  { name: 'Turning 65', url: '/turning-65' },
-  { name: 'Medicare Options', url: '/medicare-options' },
-  { name: 'About Us', url: '/about' },
-  { name: 'Contact', url: '/contact' },
-];
-
-const mprcDisplay = {full: "Part of the Medicare Plans Resource Center", abbrev: "Part of the MPRC"}
+import { mprcDisplay, pages } from '../../data/constants';
 
 const isCurrent = (pathname, url) =>
   url === '/' ? pathname === '/' : pathname.startsWith(url);

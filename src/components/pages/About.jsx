@@ -1,7 +1,7 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { brokers } from "../../assets/brokers";
 import Broker from "../individual/BrokerProfile";
 import { BasicButton } from "../individual/Button";
+import { brokers } from "../../data/constants";
 
 const About = () => {
   return (
@@ -33,7 +33,7 @@ const About = () => {
         <div className="wrap">
           <h2 className="h2 mb-10">Meet the team</h2>
           <div className="flex flex-col gap-4">
-            {brokers.map((broker) => (
+            {brokers?.map((broker) => (
               <Broker key={broker.name} broker={broker} />
             ))}
           </div>
