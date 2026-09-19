@@ -4,23 +4,12 @@ import MedigapPlan from "../individual/MedigapPlan";
 import AdvantagePlan from "../individual/AdvantagePlan";
 import DrugPlan from "../individual/DrugPlan";
 import { BasicButton } from "../individual/Button";
+import { planTitles, planTypes } from "../../data/constants";
 
-const planTypes = [
-  { name: "Advantage", id: 1, url: "advantage-plans" },
-  { name: "Medigap", id: 2, url: "medigap-plans" },
-  { name: "Drug Plans", id: 3, url: "drug-plans" },
-];
-
-const planComponents = {
+export const planComponents = {
   "medigap-plans": <MedigapPlan />,
   "drug-plans": <DrugPlan />,
   "advantage-plans": <AdvantagePlan />,
-};
-
-const planTitles = {
-  "medigap-plans": "Medigap / Supplement",
-  "drug-plans": "Prescription Drug Plans",
-  "advantage-plans": "Medicare Advantage",
 };
 
 const Options = () => {

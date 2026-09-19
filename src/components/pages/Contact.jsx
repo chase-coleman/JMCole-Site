@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Modal from "@mui/material/Modal";
 import emailjs from "@emailjs/browser";
 import ModalBox from "../individual/Modal";
+import { promises } from "../../data/constants";
 
 // Handles the input validation errors & rendering them
 function FormField({ id, label, error, children }) {
@@ -33,12 +34,6 @@ function FormField({ id, label, error, children }) {
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-
-const promises = [
-  "One of our brokers calls you, not a call centre.",
-  "No cost, and no obligation to enroll in anything.",
-  "We compare the carriers available where you live.",
-];
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -125,7 +120,7 @@ const Contact = () => {
                 What happens next
               </span>
               <ul className="flex flex-col gap-4">
-                {promises.map((line) => (
+                {promises?.map((line) => (
                   <li key={line} className="flex items-start gap-3">
                     <span
                       className="mt-1 grid h-4 w-4 flex-none place-items-center rounded-full"

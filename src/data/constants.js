@@ -1,0 +1,172 @@
+export const mprcDisplay = {
+  full: "Part of the Medicare Plans Resource Center", 
+  abbrev: "Part of the MPRC"
+}
+
+export const pages = [
+  { name: 'Home', url: '/' },
+  { name: 'FAQs', url: '/medicare-faqs' },
+  { name: 'Turning 65', url: '/turning-65' },
+  { name: 'Medicare Options', url: '/medicare-options' },
+  { name: 'About Us', url: '/about' },
+  { name: 'Contact', url: '/contact' },
+];
+
+export const carriers = [
+  { src: "/Aflac-logo.webp", alt: "Aflac", href: "https://www.aflacmedicaresupplement.com/" },
+  { src: "/Atrio-logo.webp", alt: "Atrio", href: "https://www.atriohp.com/" },
+  { src: "/Devoted-logo.webp", alt: "Devoted", href: "https://www.devoted.com/" },
+  { src: "/Humana-logo.webp", alt: "Humana", href: "https://www.humana.com/" },
+  { src: "/Providence-logo.webp", alt: "Providence", href: "https://www.providencehealthplan.com/medicare/medicare-advantage-plans" },
+  { src: "/PS-logo.webp", alt: "Pacific Source", href: "https://medicare.pacificsource.com/" },
+  { src: "/Regence-logo.webp", alt: "Regence", href: "https://www.regence.com/medicare/plans" },
+  { src: "/UHC-logo.webp", alt: "UHC", href: "https://www.uhc.com/medicare" },
+  { src: "/Wellcare-logo.webp", alt: "Wellcare", href: "https://www.wellcare.com/en/medicare" },
+];
+
+export const questions = [
+  {
+    q: "Should I go with a Medigap or an Advantage plan?",
+    a: "They work very differently, and the cheaper one is not always the better one. We go through both with you.",
+    to: "/medicare-options",
+  },
+  {
+    q: "What plans should I choose?",
+    a: "It depends on your doctors, your prescriptions and your county. No one plan is best for everybody.",
+    to: "/medicare-options",
+  },
+  {
+    q: "What about all the stuff they say on TV?",
+    a: "A lot of those ads are national. The plan being advertised may not even be sold where you live.",
+    to: "/medicare-faqs",
+  },
+  {
+    q: "How much do I have to pay?",
+    a: "Medicare is not free, and each part is priced differently. We will go through the actual numbers with you.",
+    to: "/medicare-faqs",
+  },
+];
+
+export const brokers = [
+  {
+    name: "John Coleman",
+    phone: "541-554-8382",
+    email: "john@mprc.info",
+    position: "Principal Broker • Founder",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    background: "var(--accent)",
+    npn: "18136647",
+    img: "/john-main.webp"
+  },
+  {
+    name: "Matt Buck",
+    phone: "541-285-8998",
+    email: "matt22buck@gmail.com",
+    position: "Broker",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    background: "var(--green)",
+    npn: "21435734",
+    img: "/matt-main.webp"
+  },
+  {
+    name: "Garin Coleman",
+    phone: "541-510-9685",
+    email: "garin@mprc.info",
+    position: "Broker",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    background: "var(--accent)",
+    npn: "21248588",
+    img: "/garin-main.webp"
+  },
+  {
+    name: "JJ Peters",
+    phone: "503-5020891",
+    email: "jj@mprc.info",
+    position: "Broker",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    background: "var(--green)",
+    npn: "22154524",
+    img: "/jj-main.webp"
+  },
+  {
+    name: "Chase Coleman",
+    phone: "541-554-5916",
+    email: "chase@mprc.info",
+    position: "Broker • Marine Corps Veteran",
+    bio: "Chase has been an insurance broker since 2022, following five years of service in the United States Marine Corps. Based in Portland, he lives with his cat, Sage, and enjoys reading, backpacking, cooking good food, riding motorcycles, and traveling. He’s also a software engineer and built both this website and our plan comparison site!",
+    background: "var(--accent)",
+    npn: "20318912",
+    img: "/chase-main.webp"
+  },
+];
+
+export const reviews = [
+  {
+    text: "When I began researching Medicare options, I wasn't sure where to turn to find the most relevant information. A friend referred me to John and I couldn't be happier. He was extremely responsive, provided great information about the options, and made my transition into Medicare simple and seamless.",
+    name: "Steve L.",
+  },
+  {
+    text: "John was exceptional at guiding me through the maze of options for determining a Medicare supplement plan for my wife and me. As we explored options, his attitude was very relaxed and personal and made certain he was addressing our concerns. I was fortunate to have him as a consultant through the process.",
+    name: "Mark F."
+  },
+  {
+    text: "John and Chase have been great helping us to understand Medicare, and what our different options are. They simplify the information and the process, and welcome any questions we have.",
+    name: "Jeff & Linda R."
+  },
+  {
+    text: "Friends recommend John as an Agent for my Medicare supplemental insurance when I was preparing to retire. There was a lot on my mind at that time. John as an independent agent was diligent in finding an insurance company that offered the most coverage for the least cost to me. He is kind and considerate as to my lifestyle and special needs. Now I have the privilege to recommend John to my friends.",
+    name: "Carol P."
+  },
+  {
+    text: "I had a positive experience learning about my options with Medicare Advantage plans. Chase was helpful and knowledgeable regarding how to make an informed decision about my choices. Thank you!",
+    name: "Henry F."
+  },
+  {
+    text: "Garin was crucial in finding a medicare option that fit my needs. He answered every question I had and took care of everything for me. I recommend him to anyone looking for a knowleadgeable and trustworthy broker!",
+    name: "Daniel K."
+  },
+  {
+    text: "In the minefield that can be Medicare insurance I did not know how little I knew about coverage options for value. John took the time to explain and helped me to my best coverage. He did such a great job he now has all my insurance business. He is a trusted partner in my coverage well being. I don't know if he owns a cape, but in our home he is a superhero.",
+    name: "David D."
+  },
+
+];
+
+export const promises = [
+  "One of our brokers calls you, not a call centre.",
+  "No cost, and no obligation to enroll in anything.",
+  "We compare the carriers available where you live.",
+];
+
+export const planTitles = {
+  "medigap-plans": "Medigap / Supplement",
+  "drug-plans": "Prescription Drug Plans",
+  "advantage-plans": "Medicare Advantage",
+};
+
+export const planTypes = [
+  { name: "Advantage", id: 1, url: "advantage-plans" },
+  { name: "Medigap", id: 2, url: "medigap-plans" },
+  { name: "Drug Plans", id: 3, url: "drug-plans" },
+];
+
+export const enrollmentWindows = [
+  { tag: "3 months before", body: "Your enrollment window opens three months ahead of your birth month." },
+  { tag: "Your birth month", body: "The middle of the window. Coverage generally starts on the 1st.", key: true },
+  { tag: "3 months after", body: "The window closes. Miss it and a Late Enrollment Penalty can follow you." },
+];
+
+export const textOptions = {
+  success: {
+    title: "Request submitted",
+    description:
+      "One of our brokers will be calling you as soon as possible.",
+  },
+  failure: {
+    title: "That didn't go through",
+    description:
+      "Please try again, or give us a call directly at 541-554-8382.",
+  },
+};
+
+export const notFoundError = "The page may have moved, or it may never have existed. Head back and we'll get you where you were going.";

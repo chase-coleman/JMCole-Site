@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { notFoundError } from "../../data/constants";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -17,8 +18,7 @@ const NotFound = () => {
       </p>
       <h1 className="h2">We couldn't find that page.</h1>
       <p className="lede measure">
-        The page may have moved, or it may never have existed. Head back and
-        we'll get you where you were going.
+        {notFoundError}
       </p>
       <button className="btn btn-primary btn-lg mt-2" onClick={() => navigate("/")}>
         Back to home

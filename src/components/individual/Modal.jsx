@@ -3,19 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
-
-const textOptions = {
-  success: {
-    title: "Request submitted",
-    description:
-      "One of our brokers will be calling you as soon as possible.",
-  },
-  failure: {
-    title: "That didn't go through",
-    description:
-      "Please try again, or give us a call directly at 541-554-8382.",
-  },
-};
+import { textOptions } from "../../data/constants";
 
 const ModalBox = ({ status, setShowModal }) => {
   const content = status ? textOptions.success : textOptions.failure;
