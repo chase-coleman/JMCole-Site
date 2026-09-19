@@ -229,10 +229,13 @@ const Home = () => {
           <ul className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
             {brokers.map((broker) => (
               <li key={broker.name} className="flex flex-col gap-1">
+                <img
+                  src={broker.img}
+                  alt={broker.name}
+                  className="h-full w-full rounded-[var(--r)] object-cover"
+                  style={{ border: "1px solid var(--line)" }}
+                />
                 <h3 className="h3 !text-base">{broker.name}</h3>
-                <p className="text-sm" style={{ color: "var(--text-faint)" }}>
-                  {broker.position}
-                </p>
                 <a
                   href={`tel:${broker.phone}`}
                   className="mt-1 text-sm"
@@ -240,6 +243,7 @@ const Home = () => {
                 >
                   {broker.phone}
                 </a>
+                <p className="text-xs">NPN: {broker.npn}</p>
               </li>
             ))}
           </ul>

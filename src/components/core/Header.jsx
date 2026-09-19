@@ -13,12 +13,16 @@ const pages = [
   { name: 'Contact', url: '/contact' },
 ];
 
+const mprcDisplay = {full: "Part of the Medicare Plans Resource Center", abbrev: "Part of the MPRC"}
+
 const isCurrent = (pathname, url) =>
   url === '/' ? pathname === '/' : pathname.startsWith(url);
 
 function NavBar() {
   const [open, setOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
+  const [screenSize, setScreenSize] = useState(() => 
+  typeof window !== 'undefined' ? window.innerWidth : 0);
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -28,6 +32,21 @@ function NavBar() {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    // 1. Guard against environments where window isn't defined (like Next.js SSR)
+    if (typeof window === 'undefined') return;
+
+    // 2. Define the handler to update state
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    // 3. Add the event listener
+    window.addEventListener('resize', handleResize);
+
+    // 4. Clean up the listener when the component unmounts
+    return () => window.removeEventListener('resize', handleResize);
+
   }, []);
 
   // Close the drawer whenever the route changes (covers browser back/forward).
@@ -47,8 +66,15 @@ function NavBar() {
     <header className={`nav ${stuck || open ? 'is-stuck' : ''}`}>
       <div className="wrap nav-inner">
         <button className="brand" onClick={() => handleNavigate('/')} aria-label="JMCole Group, home">
-          <span className="brand-mark" aria-hidden="true">JM</span>
-          <span className="brand-name">JMCole&nbsp;Group</span>
+          <img src="./jmcole-logo-only.webp" alt="JM" className='w-12' />
+          <span className="brand-text">
+            <span className="brand-name">JMCole&nbsp;Group</span>
+            {screenSize < 600 ? 
+            <span className="brand-tagline">{mprcDisplay.abbrev}</span>
+            : 
+            <span className="brand-tagline">{mprcDisplay.full}</span>
+            }
+          </span>
         </button>
 
         <nav className="nav-links" aria-label="Primary">
@@ -65,7 +91,7 @@ function NavBar() {
         </nav>
 
         <button
-          className="btn btn-primary hidden sm:inline-flex"
+          className="btn btn-primary nav-cta"
           onClick={() => handleNavigate('/contact')}
         >
           Request a call
@@ -96,7 +122,7 @@ function NavBar() {
               </button>
             ))}
             <button
-              className="btn btn-primary mt-2 sm:hidden"
+              className="btn btn-primary nav-drawer-cta mt-2"
               onClick={() => handleNavigate('/contact')}
             >
               Request a call

@@ -1,28 +1,36 @@
 const Broker = ({ broker }) => {
   return (
-    <article className="card grid gap-6 !p-6 sm:!p-8 md:grid-cols-[14rem_1fr]">
-      <img
-        src="/chase-main.webp"
-        alt={broker.name}
-        className="aspect-[4/5] w-full rounded-[var(--r)] object-cover"
-        style={{ border: "1px solid var(--line)" }}
-      />
+    <article
+      className="broker-card card grid gap-6 !p-6 sm:!p-8 md:grid-cols-[14rem_1fr]"
+      style={{ background: broker.background }}
+    >
+      <div className="flex flex-col gap-2">
+        <img
+          src={broker.img}
+          alt={broker.name}
+          className="aspect-square w-full rounded-[var(--r)] object-cover object-top md:aspect-auto md:h-3/4"
+          style={{ border: "1px solid var(--line)" }}
+        />
+        <p className="mono !text-[.5rem]">NPN: {broker.npn}</p>
+      </div>
 
       <div className="flex flex-col gap-4">
         <div>
           <h3 className="h3">{broker.name}</h3>
-          <p className="mt-1 text-sm" style={{ color: "var(--text-faint)" }}>
-            {broker.position}
-          </p>
+          <p className="broker-position mt-1 text-sm">{broker.position}</p>
         </div>
+
+        <hr className="broker-divider" />
 
         <p className="body measure">{broker.bio}</p>
 
-        <div className="mt-auto flex flex-wrap gap-x-8 gap-y-2 pt-2">
-          <a href={`mailto:${broker.email}`} className="text-sm break-all" style={{ color: "var(--accent)" }}>
+        <hr className="broker-divider" />
+
+        <div className="mt-auto flex flex-wrap gap-x-8 gap-y-2 pt-2 text-md">
+          <a href={`mailto:${broker.email}`} className="break-all">
             {broker.email}
           </a>
-          <a href={`tel:${broker.phone}`} className="text-sm" style={{ color: "var(--accent)" }}>
+          <a href={`tel:${broker.phone}`} className="">
             {broker.phone}
           </a>
         </div>

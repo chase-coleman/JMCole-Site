@@ -28,7 +28,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="brand" role="presentation">
-              <span className="brand-mark" aria-hidden="true">JM</span>
+              <img src="./jmcole-logo-only.webp" alt="JM" className='w-12' />
               <span className="brand-name">JMCole&nbsp;Group</span>
             </div>
             <p className="body max-w-xs !text-sm">
