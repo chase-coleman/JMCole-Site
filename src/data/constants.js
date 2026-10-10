@@ -53,7 +53,7 @@ export const brokers = [
     phone: "541-554-8382",
     email: "john@mprc.info",
     position: "Principal Broker • Founder",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    bio: "After spending 26 years as a Pastor, John changed career paths over a decade ago to continue to help people – but this time in the Medicare and Life insurance world.  He loves what he does in the insurance space so much that he began to build a team of people – all of whom are either his sons or his friends.  Outside of work he enjoys traveling, reading, working out to stay healthy, and spending time with his lady.",
     background: "var(--accent)",
     npn: "18136647",
     img: "/john-main.webp"
@@ -63,7 +63,8 @@ export const brokers = [
     phone: "541-285-8998",
     email: "matt22buck@gmail.com",
     position: "Broker",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    bio: "I thoroughly enjoy my job as an insurance broker! I believe the foundation of any good relationship starts with respect, good communication and honesty. I am committed to bringing these qualities to our relationship as your agent. I also help my wife manage her family's farm and am a licensed real estate agent in the state of Oregon. I enjoy aviation, spending time outdoors with my family, and taking the road less traveled.",
+    quote: "'Strive not to be a success, but rather to be of value' - Albert Einstein",
     background: "var(--green)",
     npn: "21435734",
     img: "/matt-main.webp"
@@ -73,7 +74,7 @@ export const brokers = [
     phone: "541-510-9685",
     email: "garin@mprc.info",
     position: "Broker",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    bio: "Garin has worked intermittently in customer service since his first job at Albertsons in high school. Since entering the insurance field two years ago, he has enjoyed using his knowledge & experience to help people meet their needs, whatever they may be. Besides work, he enjoys watching movies & playing games of all sorts, riding his motorcycle, trying various types of art, and sometimes just having a lazy day!",
     background: "var(--accent)",
     npn: "21248588",
     img: "/garin-main.webp"
@@ -83,7 +84,7 @@ export const brokers = [
     phone: "503-5020891",
     email: "jj@mprc.info",
     position: "Broker",
-    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrumenim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum enim, eos aut necessitatibus earum maxime tempora neque, id recusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas? Nostrum enim, eos aut necessitatibus earum maxime tempora neque, idrecusandae deserunt ex natus obcaecati maiores distinctio est suscipit quos, omnis voluptas?",
+    bio: "JJ has lived in the Pacific Northwest her entire life, growing up in a small town in eastern Oregon and now residing in Oregon City. She spent most of her career in public service and considers it a privilege to help seniors navigate Medicare to find plans that best meet their health and financial needs. She is passionate about helping others and saving people money. Outside of work, JJ and her husband, Aaron, have been married for over 33 years. They have two adult children and recently welcomed their first grandchild. As empty nesters, they enjoy traveling, playing golf, and spending time at home with their dog, Maverick.",
     background: "var(--green)",
     npn: "22154524",
     img: "/jj-main.webp"
@@ -93,7 +94,7 @@ export const brokers = [
     phone: "541-554-5916",
     email: "chase@mprc.info",
     position: "Broker • Marine Corps Veteran",
-    bio: "Chase has been an insurance broker since 2022, following five years of service in the United States Marine Corps. Based in Portland, he lives with his cat, Sage, and enjoys reading, backpacking, cooking good food, riding motorcycles, and traveling. He’s also a software engineer and built both this website and our plan comparison site!",
+    bio: "Chase has been an insurance broker since 2022, following five years of service in the United States Marine Corps. He enjoys creating meaningful and lasting relationships with his clients. Based in Portland, he lives with his cat, Sage, and enjoys reading, backpacking, cooking good food, riding motorcycles, and traveling. He’s also a software engineer and built both this website and our plan comparison site!",
     background: "var(--accent)",
     npn: "20318912",
     img: "/chase-main.webp"

@@ -22,7 +22,9 @@ const Broker = ({ broker }) => {
 
         <hr className="broker-divider" />
 
-        <p className="body measure">{broker.bio}</p>
+        <p className="body">{broker.bio}</p>
+
+        {broker.quote && <p className="body italic">{broker.quote}</p>}
 
         <hr className="broker-divider" />
 
