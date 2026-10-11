@@ -1,10 +1,15 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { Oval } from "react-loader-spinner";
 import { useState, useRef } from "react";
 import Modal from "@mui/material/Modal";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import emailjs from "@emailjs/browser";
 import ModalBox from "../individual/Modal";
-import { promises } from "../../data/constants";
+import { counties, promises } from "../../data/constants";
+
+// County options match from the start of the name only: "li" offers Lincoln
+// and Linn, not Gilliam.
+const filterCounties = createFilterOptions({ matchFrom: "start", trim: true });
 
 // Handles the input validation errors & rendering them
 function FormField({ id, label, error, children }) {
@@ -47,6 +52,7 @@ const Contact = () => {
     handleSubmit,
     watch,
     reset,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -254,6 +260,43 @@ const Contact = () => {
                     maxLength={10}
                     inputMode="numeric"
                     className={`input ${errors.phoneNumber ? "input-error" : ""}`}
+                  />
+                </FormField>
+
+                {/* County */}
+                <FormField id="county" label="County" error={errors.county}>
+                  <Controller
+                    name="county"
+                    control={control}
+                    defaultValue={null}
+                    rules={{ required: "Please choose your county" }}
+                    render={({ field }) => (
+                      <>
+                        <Autocomplete
+                          id="county"
+                          options={counties}
+                          filterOptions={filterCounties}
+                          value={field.value}
+                          onChange={(_, value) => field.onChange(value)}
+                          onBlur={field.onBlur}
+                          autoHighlight
+                          renderInput={(params) => (
+                            <div ref={params.InputProps.ref}>
+                              <input
+                                {...params.inputProps}
+                                type="text"
+                                placeholder="Start typing your county"
+                                className={`${params.inputProps.className} input ${errors.county ? "input-error" : ""}`}
+                              />
+                            </div>
+                          )}
+                        />
+                        {/* EmailJS reads the form's named inputs, so the
+                            selected county is sent from here rather than from
+                            whatever text is in the search box. */}
+                        <input type="hidden" name="county" value={field.value ?? ""} />
+                      </>
+                    )}
                   />
                 </FormField>
 

@@ -3,6 +3,8 @@ export const mprcDisplay = {
   abbrev: "Part of the MPRC"
 }
 
+export const planComparisonUrl = "https://www.oregonmedicareoptions.com/";
+
 export const pages = [
   { name: 'Home', url: '/' },
   { name: 'FAQs', url: '/medicare-faqs' },
@@ -81,7 +83,7 @@ export const brokers = [
   },
   {
     name: "JJ Peters",
-    phone: "503-5020891",
+    phone: "503-502-0891",
     email: "jj@mprc.info",
     position: "Broker",
     bio: "JJ has lived in the Pacific Northwest her entire life, growing up in a small town in eastern Oregon and now residing in Oregon City. She spent most of her career in public service and considers it a privilege to help seniors navigate Medicare to find plans that best meet their health and financial needs. She is passionate about helping others and saving people money. Outside of work, JJ and her husband, Aaron, have been married for over 33 years. They have two adult children and recently welcomed their first grandchild. As empty nesters, they enjoy traveling, playing golf, and spending time at home with their dog, Maverick.",
@@ -134,9 +136,20 @@ export const reviews = [
 ];
 
 export const promises = [
-  "One of our brokers calls you, not a call centre.",
+  "One of our brokers calls you, not a call center.",
   "No cost, and no obligation to enroll in anything.",
   "We compare the carriers available where you live.",
+];
+
+// Every Oregon county, not just the ones we sell plans in, because a caller
+// can live anywhere. "Outside Oregon" stays last.
+export const counties = [
+  "Baker", "Benton", "Clackamas", "Clatsop", "Columbia", "Coos", "Crook",
+  "Curry", "Deschutes", "Douglas", "Gilliam", "Grant", "Harney", "Hood River",
+  "Jackson", "Jefferson", "Josephine", "Klamath", "Lake", "Lane", "Lincoln",
+  "Linn", "Malheur", "Marion", "Morrow", "Multnomah", "Polk", "Sherman",
+  "Tillamook", "Umatilla", "Union", "Wallowa", "Wasco", "Washington",
+  "Wheeler", "Yamhill", "Outside Oregon",
 ];
 
 export const planTitles = {

@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { planComparisonUrl } from '../../data/constants';
 
 const columns = [
   {
@@ -7,6 +9,7 @@ const columns = [
       { name: 'Medicare Options', url: '/medicare-options' },
       { name: 'Turning 65', url: '/turning-65' },
       { name: 'FAQs', url: '/medicare-faqs' },
+      { name: 'Plan Comparison Site', href: planComparisonUrl },
     ],
   },
   {
@@ -43,18 +46,36 @@ const Footer = () => {
               <h2 className="mono" style={{ color: 'var(--text-faint)', textTransform: 'uppercase', letterSpacing: '.14em' }}>
                 {col.title}
               </h2>
-              {col.links.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => navigate(link.url)}
-                  className="text-left text-sm transition-colors"
-                  style={{ color: 'var(--text-dim)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}
-                >
-                  {link.name}
-                </button>
-              ))}
+              {col.links.map((link) =>
+                // Links with an href go to another site and open in a new tab
+                link.href ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-left text-sm transition-colors"
+                    style={{ color: 'var(--text-dim)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}
+                  >
+                    {link.name}
+                    <OpenInNewIcon sx={{ fontSize: 14 }} aria-hidden="true" />
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
+                ) : (
+                  <button
+                    key={link.name}
+                    onClick={() => navigate(link.url)}
+                    className="text-left text-sm transition-colors"
+                    style={{ color: 'var(--text-dim)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}
+                  >
+                    {link.name}
+                  </button>
+                ),
+              )}
             </nav>
           ))}
 
@@ -71,11 +92,18 @@ const Footer = () => {
               <br />
               Eugene, OR 97401
             </p>
-            <img
-              src="/mprc-logo.webp"
-              alt="Medicare Plans Resource Center"
-              className="mt-1 w-40 max-w-full opacity-60"
-            />
+            <a
+              href="https://mprc.info/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 w-40 max-w-full opacity-60 transition-opacity hover:opacity-100"
+            >
+              <img
+                src="/mprc-logo.webp"
+                alt="Medicare Plans Resource Center"
+                className="w-full"
+              />
+            </a>
           </div>
         </div>
 

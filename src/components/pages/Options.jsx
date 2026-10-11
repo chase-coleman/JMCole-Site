@@ -4,6 +4,7 @@ import MedigapPlan from "../individual/MedigapPlan";
 import AdvantagePlan from "../individual/AdvantagePlan";
 import DrugPlan from "../individual/DrugPlan";
 import { BasicButton } from "../individual/Button";
+import PlanComparisonSiteButton from "../individual/PlanComparisonSiteButton";
 import { planTitles, planTypes } from "../../data/constants";
 
 export const planComponents = {
@@ -29,20 +30,23 @@ const Options = () => {
           </p>
         </div>
 
-        <nav className="mt-9" aria-label="Plan types">
-          <div className="tabs">
-            {planTypes.map((planType) => (
-              <Link
-                key={planType.id}
-                to={planType.url}
-                className={`tab ${active === planType.url ? "is-active" : ""}`}
-                aria-current={active === planType.url ? "page" : undefined}
-              >
-                {planType.name}
-              </Link>
-            ))}
-          </div>
-        </nav>
+        <div className="mt-9 flex flex-wrap items-center justify-between gap-4">
+          <nav aria-label="Plan types">
+            <div className="tabs">
+              {planTypes.map((planType) => (
+                <Link
+                  key={planType.id}
+                  to={planType.url}
+                  className={`tab ${active === planType.url ? "is-active" : ""}`}
+                  aria-current={active === planType.url ? "page" : undefined}
+                >
+                  {planType.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
+          <PlanComparisonSiteButton />
+        </div>
       </section>
 
       <section className="wrap pb-20">
