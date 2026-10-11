@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Marquee from "react-fast-marquee";
 import { BasicButton } from "../individual/Button";
+import PlanComparisonSiteButton from "../individual/PlanComparisonSiteButton";
 import { carriers, questions, brokers, reviews } from "../../data/constants";
 
 
@@ -42,6 +43,7 @@ const Home = () => {
               <a className="btn btn-ghost btn-lg" href="tel:541-554-8382">
                 541-554-8382
               </a>
+              <PlanComparisonSiteButton styling="btn-lg" />
             </div>
 
             <dl className="mt-6 flex flex-wrap gap-x-12 gap-y-6">
