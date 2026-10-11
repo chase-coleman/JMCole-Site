@@ -15,7 +15,7 @@ const About = () => {
             <p className="lede">
               JMCole Group is an independent Medicare brokerage. Our team brings
               over 22 combined years of Medicare experience, so you're working
-              with people who genuinely know this space.
+              with people who know this space.
             </p>
             <p className="body">
               With brokers in Eugene and Portland, we serve clients throughout
